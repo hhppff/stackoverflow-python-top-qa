@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-gh-pages": "git@github.com:tekd/gulp-gh-pages.git#update-dependency"
+    "gulp-gh-pages": "git@github.com:tekd/gulp-gh-pages.git#update-dependency",
+    "gulp-install": "^1.1.0"
   }
 }

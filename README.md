@@ -10,4 +10,6 @@
 - 极客兔兔的小站: [https://geektutu.com](https://geektutu.com)
 
 ## 贡献者
-- [gzdaijie](https://github.com/gzdaijie)
+- [Dai Jie](https://github.com/gzdaijie)
+- [Xu Ri](https://github.com/xurisun)
+- [Tijing Wang](https://github.com/vitow)

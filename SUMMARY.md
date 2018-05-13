@@ -5,4 +5,5 @@
     * [1. yield关键字的作用](stackoverlfow/1.what-does-the-yield-keyword-do.md)
     * [2. 什么是元类(metaclass)](stackoverlfow/2.what-are-metaclasses-in-python.md)
     * [3. Python中有三目运算符吗](stackoverlfow/3.does-python-have-a-ternary-conditional-operator.md)
+    * [4. 如何检查一个文件是否存在](stackoverlfow/4.How to check whether a file exists.md)
 

@@ -9,4 +9,5 @@
     * [5. if name == "main": 这句话做了什么事情](stackoverflow/5.what-does-if-name-main-do.md)
     * [6. 在Python中调用外部命令](stackoverflow/6.calling-an-external-command-in-python.md)
     * [7. 如何用一行代码合并2个字典](stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md)
+    * [9. 如何根据值对字典排序](stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md)
 

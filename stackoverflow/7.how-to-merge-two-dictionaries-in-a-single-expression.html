@@ -1,0 +1,604 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7. 如何用一行代码合并2个字典 · stackoverflow-python-top-qa</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="9.how-do-i-sort-a-dictionary-by-value.html" />
+    
+    
+    <link rel="prev" href="6.calling-an-external-command-in-python.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://geektutu.com/series" target="_blank" class="custom-link">极客兔兔的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/geekcircle/stackoverflow-python-top-qa" target="_blank" class="custom-link">stackoverflow-python-top-qa</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    StackOverflow
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.what-does-the-yield-keyword-do.html">
+            
+                <a href="1.what-does-the-yield-keyword-do.html">
+            
+                    
+                    1. yield关键字的作用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2.what-are-metaclasses-in-python.html">
+            
+                <a href="2.what-are-metaclasses-in-python.html">
+            
+                    
+                    2. 什么是元类(metaclass)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                <a href="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                    
+                    3. Python中有三目运算符吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4.how-to-check-whether-a-file-exists.html">
+            
+                <a href="4.how-to-check-whether-a-file-exists.html">
+            
+                    
+                    4. 如何检查一个文件是否存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5.what-does-if-name-main-do.html">
+            
+                <a href="5.what-does-if-name-main-do.html">
+            
+                    
+                    5. if name == "main": 这句话做了什么事情
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6.calling-an-external-command-in-python.html">
+            
+                <a href="6.calling-an-external-command-in-python.html">
+            
+                    
+                    6. 在Python中调用外部命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.7" data-path="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                <a href="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                    
+                    7. 如何用一行代码合并2个字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                <a href="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                    
+                    9. 如何根据值对字典排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >7. 如何用一行代码合并2个字典</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="7-&#x5982;&#x4F55;&#x7528;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x5408;&#x5E76;2&#x4E2A;&#x5B57;&#x5178;">7. &#x5982;&#x4F55;&#x7528;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x5408;&#x5E76;2&#x4E2A;&#x5B57;&#x5178;</h1>
+<h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
+<p>&#x6709;2&#x4E2A;Python&#x5B57;&#x5178;&#xFF0C;&#x60F3;&#x5199;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x80FD;&#x8FD4;&#x56DE;2&#x4E2A;&#x5B57;&#x5178;&#x5408;&#x5E76;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4F46;&#x662F; update() &#x5E76;&#x4E0D;&#x8FD4;&#x56DE;&#x5408;&#x5E76;&#x540E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x800C;&#x662F;&#x5C31;&#x5730;&#x4FEE;&#x6539;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> y <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">&apos;c&apos;</span><span class="token punctuation">:</span> <span class="token number">11</span><span class="token punctuation">}</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> z <span class="token operator">=</span> x<span class="token punctuation">.</span>update<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+None
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x
+<span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">&apos;c&apos;</span><span class="token punctuation">:</span> <span class="token number">11</span><span class="token punctuation">}</span>
+</code></pre>
+<p>&#x600E;&#x6837;&#x624D;&#x80FD;&#x5728;<code>z</code>&#x4E2D;&#x5F97;&#x5230;&#x5408;&#x5E76;&#x7ED3;&#x679C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;<code>x</code>&#x4E2D;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;dict.update()&#x65B9;&#x6CD5;&#x9047;&#x5230;&#x51B2;&#x7A81;&#x65F6;&#x4FDD;&#x7559;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#x4E5F;&#x662F;&#x6211;&#x6240;&#x671F;&#x671B;&#x7684;&#x3002; <a href="https://stackoverflow.com/questions/38987/how-to-merge-two-dictionaries-in-a-single-expression" target="_blank">&#x94FE;&#x63A5;</a></p>
+<h2 id="&#x56DE;&#x7B54;&#x4E00;">&#x56DE;&#x7B54;&#x4E00;</h2>
+<blockquote>
+<p>&#x5982;&#x4F55;&#x7528;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x5408;&#x5E76;2&#x4E2A;&#x5B57;&#x5178;</p>
+</blockquote>
+<p>&#x5BF9;&#x4E8E;&#x5B57;&#x5178;x, y, z&#x662F;&#x5728;x&#x4E2D;&#x66FF;&#x6362;&#x5E76;&#x5408;&#x5E76;&#x4E86;y&#x4E2D;&#x7684;&#x503C;&#x7684;&#x5B57;&#x5178;&#x3002;</p>
+<ul>
+<li>Python3.5+</li>
+</ul>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">**</span>x<span class="token punctuation">,</span> <span class="token operator">**</span>y<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Python2, (&#x6216;&#x8005;3.4 &#x6216;&#x66F4;&#x4F4E;&#x7248;&#x672C;) &#x53EF;&#x4EE5;&#x5199;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</li>
+</ul>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">merge_two_dicts</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    z <span class="token operator">=</span> x<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># z&#x521D;&#x59CB;&#x5316;&#x4E3A;x</span>
+    z<span class="token punctuation">.</span>update<span class="token punctuation">(</span>y<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># &#x7528;y&#x7684;&#x503C;&#x4FEE;&#x6539;z&#xFF0C;&#x8FD4;&#x56DE;&#x503C;None</span>
+    <span class="token keyword">return</span> z
+</code></pre>
+<p>&#x63A5;&#x7740;</p>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> merge_two_dicts<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="&#x89E3;&#x91CA;">&#x89E3;&#x91CA;</h3>
+<p>&#x4F60;&#x6709;2&#x4E2A;&#x5B57;&#x5178;&#xFF0C;&#x60F3;&#x5408;&#x5E76;&#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x5178;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x5B57;&#x5178;&#x4E2D;&#xFF0C;&#x800C;&#x4E0D;&#x6539;&#x53D8;&#x539F;&#x6709;&#x7684;&#x5B57;&#x5178;&#x3002;</p>
+<pre class="language-"><code class="lang-python">x <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+y <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">&apos;c&apos;</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">}</span>
+</code></pre>
+<p>&#x671F;&#x671B;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x5408;&#x5E76;&#x540E;&#x65B0;&#x5B57;&#x5178;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x5178;&#x7684;&#x503C;&#x8986;&#x76D6;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#x7684;&#x503C;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> z
+<span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">&apos;c&apos;</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">}</span>
+</code></pre>
+<p>&#x6709;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8BED;&#x6CD5;&#x80FD;&#x591F;&#x8FBE;&#x5230;&#x76EE;&#x7684;&#xFF0C;<a href="https://www.python.org/dev/peps/pep-0448" target="_blank">PEP 448</a>&#x63D0;&#x51FA;&#xFF0C;<a href="https://mail.python.org/pipermail/python-dev/2015-February/138564.html" target="_blank">Python 3.5&#x4E2D;&#x53EF;&#x7528;</a>&#x3002;</p>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">**</span>x<span class="token punctuation">,</span> <span class="token operator">**</span>y<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x7684;&#x786E;&#x662F;&#x5355;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;<a href="https://www.python.org/dev/peps/pep-0478/#features-for-3-5" target="_blank">Python 3.5, PEP448</a>&#x7684;&#x53D1;&#x5E03;&#x8BA1;&#x5212;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x800C;&#x4E14;&#x5DF2;&#x7ECF;&#x5199;&#x5165;&#x4E86; <a href="https://docs.python.org/dev/whatsnew/3.5.html#pep-448-additional-unpacking-generalizations" target="_blank">What&apos;s New in Python 3.5</a>&#x6587;&#x6863;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x5F88;&#x6709;&#x7EC4;&#x7EC7;&#x4ECD;&#x5728;&#x4F7F;&#x7528;Python2&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x5E0C;&#x671B;&#x6709;&#x4E00;&#x79CD;&#x5411;&#x540E;&#x517C;&#x5BB9;&#x7684;&#x65B9;&#x5F0F;&#x3002;Python2&#xFF0C;Python3.0-3.4&#x79CD;&#x6700;Pythonic&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x662F;&#x8FD9;2&#x6B65;&#x3002;</p>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> x<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+z<span class="token punctuation">.</span>update<span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># z&#x88AB;&#x6539;&#x53D8;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;None</span>
+</code></pre>
+<p>2&#x79CD;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;<code>y</code>&#x51FA;&#x73B0;&#x5728;&#x540E;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x7684;&#x503C;&#x5C06;&#x4F1A;&#x8986;&#x76D6;<code>x</code>&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x6B64;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;&#xFF0C;<code>b</code>&#x5C06;&#x4F1A;&#x53D8;&#x6210;<code>3</code></p>
+<h3 id="&#x6CA1;&#x7528;python35&#xFF0C;&#x4ECD;&#x65E7;&#x60F3;&#x4E00;&#x884C;&#x641E;&#x5B9A;">&#x6CA1;&#x7528;Python3.5&#xFF0C;&#x4ECD;&#x65E7;&#x60F3;&#x4E00;&#x884C;&#x641E;&#x5B9A;</h3>
+<p>&#x5982;&#x679C;&#x4F60;&#x6CA1;&#x6709;&#x4F7F;&#x7528;Python3.5&#xFF0C;&#x6216;&#x8005;&#x7684;&#x786E;&#x60F3;&#x5199;&#x5411;&#x540E;&#x517C;&#x5BB9;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x540C;&#x65F6;&#x60F3;&#x4E00;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x641E;&#x5B9A;&#xFF0C;&#x6700;&#x9AD8;&#x6548;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x5199;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">merge_two_dicts</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;Given two dicts, merge them into a new dict as a shallow copy.&quot;&quot;&quot;</span>
+    z <span class="token operator">=</span> x<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    z<span class="token punctuation">.</span>update<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> z
+</code></pre>
+<p>&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5355;&#x884C;&#x641E;&#x5B9A;&#x4E86;&#x3002;</p>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> merge_two_dicts<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x4F60;&#x4E5F;&#x80FD;&#x5199;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5408;&#x5E76;&#x4E0D;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x5B57;&#x5178;&#xFF0C;0&#x5230;N&#x4E2A;&#x5B57;&#x5178;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">merge_dicts</span><span class="token punctuation">(</span><span class="token operator">*</span>dict_args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;
+    Given any number of dicts, shallow copy and merge into a new dict,
+    precedence goes to key value pairs in latter dicts.
+    &quot;&quot;&quot;</span>
+    result <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> dictionary <span class="token keyword">in</span> dict_args<span class="token punctuation">:</span>
+        result<span class="token punctuation">.</span>update<span class="token punctuation">(</span>dictionary<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> result
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;Python2&#x548C;Python3&#x79CD;&#x90FD;&#x80FD;&#x8FD0;&#x884C;&#xFF0C;&#x4F8B;&#x5982;&#x7ED9;&#x5B9A;&#x4ECE;<code>a</code>&#x5230;<code>g</code>&#x7684;&#x5B57;&#x5178;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> merge_dicts<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> e<span class="token punctuation">,</span> f<span class="token punctuation">,</span> g<span class="token punctuation">)</span>
+</code></pre>
+<p><code>g</code> &#x4E2D;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x4F18;&#x5148;&#x7EA7;&#x6BD4; <code>a</code>&#x5230;<code>f</code>&#x8981;&#x9AD8;&#xFF0C;&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#x3002;</p>
+<h3 id="&#x5BF9;&#x5176;&#x4ED6;&#x7B54;&#x6848;&#x7684;&#x6279;&#x8BC4;">&#x5BF9;&#x5176;&#x4ED6;&#x7B54;&#x6848;&#x7684;&#x6279;&#x8BC4;</h3>
+<p>&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x7684;&#x65B9;&#x5F0F;</p>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> dict<span class="token punctuation">(</span>x<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> y<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x5728;Python2&#x4E2D;&#xFF0C;&#x4F1A;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5206;&#x522B;&#x4E3A;2&#x4E2A;&#x5B57;&#x5178;&#x521B;&#x5EFA;2&#x4E2A;&#x5217;&#x8868;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x521B;&#x5EFA;&#x7B2C;3&#x4E2A;&#x5217;&#x8868;&#xFF0C;&#x957F;&#x5EA6;&#x7B49;&#x4E8E;&#x524D;&#x4E24;&#x8005;&#x4E4B;&#x548C;&#xFF0C;&#x7136;&#x540E;&#x4E22;&#x5F03;&#x8FD9;&#x4E09;&#x4E2A;&#x5217;&#x8868;&#x53BB;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B57;&#x5178;&#x3002;&#x5728;Python3&#x79CD;&#xFF0C;&#x8FD9;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x60F3;&#x5408;&#x5E76;2&#x4E2A; <code>dict_items</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;2&#x4E2A;&#x5217;&#x8868;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> c <span class="token operator">=</span> dict<span class="token punctuation">(</span>a<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> b<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">&quot;&lt;stdin&gt;&quot;</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+TypeError<span class="token punctuation">:</span> unsupported operand type<span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token keyword">for</span> <span class="token operator">+</span><span class="token punctuation">:</span> <span class="token string">&apos;dict_items&apos;</span> <span class="token operator">and</span> <span class="token string">&apos;dict_items&apos;</span>
+</code></pre>
+<p>&#x4F60;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x628A;&#x5B83;&#x4EEC;&#x8F6C;&#x6362;&#x6210;&#x5217;&#x8868;&#xFF0C;&#x4F8B;&#x5982; <code>z = dict(list(x.items()) + list(y.items()))</code>&#xFF0C;&#x8FD9;&#x662F;&#x5BF9;&#x8D44;&#x6E90;&#x548C;&#x7B97;&#x529B;&#x7684;&#x4E00;&#x79CD;&#x6D6A;&#x8D39;&#x3002;</p>
+<p>&#x76F8;&#x4F3C;&#x7684;&#xFF0C;&#x5728;Python3&#x4E2D;&#x53D6; <code>items()</code>&#x7684;&#x5E76;&#x96C6;&#xFF08;Python2.7&#x79CD;&#x7684;<code>viewitems()</code>&#xFF09;&#x4E5F;&#x4F1A;&#x5931;&#x8D25;&#x5F53;&#x503C;&#x662F;&#x4E00;&#x4E9B;&#x4E0D;&#x53EF;&#x54C8;&#x5E0C;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#xFF08;&#x4F8B;&#x5982;&#x5217;&#x8868;&#xFF09;&#x3002;&#x53CA;&#x65F6;&#x503C;&#x90FD;&#x662F;&#x53EF;&#x54C8;&#x5E0C;&#x7684;&#xFF0C;<strong>&#x7531;&#x4E8E;&#x96C6;&#x5408;&#x662F;&#x65E0;&#x5E8F;&#x7684;&#xFF0C;&#x884C;&#x4E3A;&#x53D6;&#x51B3;&#x4E8E;&#x96C6;&#x5408;&#x5143;&#x7D20;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x8981;&#x8FD9;&#x4E48;&#x505A;</strong></p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> c <span class="token operator">=</span> dict<span class="token punctuation">(</span>a<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">|</span> b<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x5C55;&#x793A;&#x4E86;&#x5F53;&#x503C;&#x662F;&#x4E0D;&#x53EF;hash&#x65F6;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> y <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> dict<span class="token punctuation">(</span>x<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">|</span> y<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">&quot;&lt;stdin&gt;&quot;</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+TypeError<span class="token punctuation">:</span> unhashable type<span class="token punctuation">:</span> <span class="token string">&apos;list&apos;</span>
+</code></pre>
+<p>&#x8FD9;&#x6709;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x5C55;&#x793A;&#x4E86;&#x56E0;&#x96C6;&#x5408;&#x7684;&#x65E0;&#x5E8F;&#x6027;&#xFF0C;&#x5BFC;&#x81F4;y&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x5931;&#x6548;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;&#x4FDD;&#x7559;&#x4E86;x&#x7684;&#x503C;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> x <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> y <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> dict<span class="token punctuation">(</span>x<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">|</span> y<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+</code></pre>
+<p>&#x53E6;&#x4E00;&#x79CD;&#x53D6;&#x5DE7;&#x7684;&#x65B9;&#x6CD5;&#x4E5F;&#x4E0D;&#x5E94;&#x5F53;&#x4F7F;&#x7528;</p>
+<pre class="language-"><code class="lang-python">z <span class="token operator">=</span> dict<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">**</span>y<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x4E86;&#x5B57;&#x5178;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x975E;&#x5E38;&#x5FEB;&#xFF0C;&#x5185;&#x5B58;&#x5360;&#x7528;&#x975E;&#x5E38;&#x5C0F;&#xFF08;&#x4EC5;&#x6BD4;&#x6700;&#x5F00;&#x59CB;&#x7684;2&#x6B65;&#x7684;&#x65B9;&#x6CD5;&#x591A;&#x4E00;&#x70B9;&#xFF09;&#x3002;&#x4F46;&#x662F;&#x9664;&#x975E;&#x4F60;&#x51C6;&#x786E;&#x5730;&#x77E5;&#x9053;&#x5C06;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#xFF08;&#x90A3;&#x5C31;&#x662F;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x5178;&#x5C06;&#x4F1A;&#x4F5C;&#x4E3A;&#x5173;&#x952E;&#x5B57;&#x53C2;&#x6570;&#x4F20;&#x7ED9;&#x5B57;&#x5178;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09;&#xFF0C;&#x8FD9;&#x5F88;&#x96BE;&#x7406;&#x89E3;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x9884;&#x671F;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E0D;Pythonic&#x3002;</p>
+<p>&#x8FD9;&#x6709;&#x4E00;&#x4E2A;&#x8FD9;&#x79CD;&#x7528;&#x6CD5;&#x5728;django&#x4E2D;&#x88AB;&#x7EA0;&#x6B63;&#x7684;&#x4F8B;&#x5B50;&#x3002;<a href="https://code.djangoproject.com/attachment/ticket/13357/django-pypy.2.diff" target="_blank">remediated in django</a></p>
+<p>&#x5B57;&#x5178;&#x671F;&#x671B;&#x63A5;&#x53D7;&#x53EF;&#x54C8;&#x5E0C;&#x7684;&#x952E;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x4E0D;&#x53EF;&#x53D8;&#x96C6;&#x5408;(frozensets)&#x548C;&#x5143;&#x7EC4;&#xFF09;,&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5F53;&#x952E;&#x4E0D;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5728;Python3&#x4E2D;&#x4F1A;&#x5931;&#x8D25;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> c <span class="token operator">=</span> dict<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token operator">**</span>b<span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">&quot;&lt;stdin&gt;&quot;</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+TypeError<span class="token punctuation">:</span> keyword arguments must be strings
+</code></pre>
+<p>&#x4ECE;<a href="https://mail.python.org/pipermail/python-dev/2010-April/099459.html" target="_blank">&#x90AE;&#x4EF6;&#x5217;&#x8868;</a>&#x4E2D;&#xFF0C;Python&#x8BED;&#x8A00;&#x7684;&#x521B;&#x59CB;&#x4EBA;&#xFF0C;Guido van Rossum &#x5199;&#x9053;&#xFF1A;</p>
+<blockquote>
+<p>&#x6211;&#x5BA3;&#x5E03; dict({}, **{1:3})&#x662F;&#x975E;&#x6CD5;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x6EE5;&#x7528;&#x4E86; ** &#x7684;&#x673A;&#x5236;</p>
+</blockquote>
+<p>&#x53E6;&#x4E00;&#x53E5;</p>
+<blockquote>
+<p>&#x5F88;&#x660E;&#x663E;&#xFF0C;dict(x, **y) &#x6BD4; &quot;call x.update(y) and return x&quot;&#x66F4;cool&#xFF0C;&#x4E2A;&#x4EBA;&#x8BA4;&#x4E3A;&#x6BD4;&#x8D77;cool&#xFF0C;&#x66F4;despicable&#xFF08;&#x5351;&#x9119;&#xFF09;</p>
+</blockquote>
+<p>&#x6211;&#x7684;&#x7406;&#x89E3;&#xFF08;&#x4E5F;&#x662F;<a href="https://mail.python.org/pipermail/python-dev/2010-April/099485.html" target="_blank">&#x8BED;&#x8A00;&#x521B;&#x59CB;&#x4EBA;</a>&#x7684;&#x7406;&#x89E3;&#xFF09;&#xFF1A;dict(**y)&#x7684;&#x76EE;&#x7684;&#x662F;&#x521B;&#x5EFA;&#x5B57;&#x5178;&#x65F6;&#x589E;&#x5F3A;&#x53EF;&#x8BFB;&#x6027;&#x7684;&#xFF0C;&#x4F8B;&#x5982;</p>
+<pre class="language-"><code class="lang-python">dict<span class="token punctuation">(</span>a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> c<span class="token operator">=</span><span class="token number">11</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x800C;&#x4E0D;&#x662F;</p>
+<pre class="language-"><code class="lang-python"><span class="token punctuation">{</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">&apos;c&apos;</span><span class="token punctuation">:</span> <span class="token number">11</span><span class="token punctuation">}</span>
+</code></pre>
+<h3 id="&#x5BF9;&#x8BC4;&#x8BBA;&#x7684;&#x56DE;&#x590D;">&#x5BF9;&#x8BC4;&#x8BBA;&#x7684;&#x56DE;&#x590D;</h3>
+<blockquote>
+<p>&#x4E0D;&#x7BA1;Guido&#x6240;&#x8BF4;&#xFF0C;dict(x, <strong>y)&#x7B26;&#x5408;&#x8BED;&#x6CD5;&#x89C4;&#x8303;&#xFF0C;&#x800C;&#x4E14;&#x5728;Python2&#x548C;Python3&#x4E2D;&#x90FD;&#x80FD;&#x5DE5;&#x4F5C;&#xFF0C;&#x8FD9;&#x53EA;&#x9002;&#x7528;&#x4E8E;&#x952E;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x539F;&#x56E0;&#x662F;&#x5173;&#x952E;&#x5B57;&#x53C2;&#x6570;&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#x5BFC;&#x81F4;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5B57;&#x5178;&#x7684;&#x4E00;&#x79CD;&#x7B80;&#x5199;&#x673A;&#x5236;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#xFF0C;&#x4F7F;&#x7528; </strong> &#x64CD;&#x4F5C;&#x7B26;&#x4E5F;&#x6CA1;&#x6709;&#x6EE5;&#x7528;&#x673A;&#x5236;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A; ** &#x7684;&#x8BBE;&#x8BA1;&#x6070;&#x6070;&#x662F;&#x4E3A;&#x4E86;&#x5C06;&#x5173;&#x952E;&#x5B57;&#x4F20;&#x9012;&#x7ED9;&#x5B57;&#x5178;&#x3002;</p>
+</blockquote>
+<p>&#x800C;&#x4E14;&#xFF0C;&#x5F53;&#x952E;&#x4E0D;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#xFF0C;Python3&#x4E2D;&#x4E0D;&#x5DE5;&#x4F5C;&#x3002;&#x9690;&#x5F0F;&#x7684;&#x8C03;&#x7528;&#x7EA6;&#x5B9A;&#x662F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x91C7;&#x7528;&#x666E;&#x901A;&#x7684;&#x5B57;&#x5178;&#xFF0C;&#x7528;&#x6237;&#x5FC5;&#x987B;&#x53EA;&#x4F20;&#x9012;&#x5B57;&#x7B26;&#x4E32;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x90FD;&#x662F;&#x8FDD;&#x80CC;&#x4E86;&#x8FD9;&#x4E00;&#x7EA6;&#x5B9A;&#x7684;&#x3002;&#x5728;Python2&#x4E2D; <code>dict</code>&#x6253;&#x7834;&#x4E86;&#x8FD9;&#x4E2A;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> foo<span class="token punctuation">(</span><span class="token operator">**</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">)</span><span class="token punctuation">:</span> None<span class="token punctuation">}</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">&quot;&lt;stdin&gt;&quot;</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+TypeError<span class="token punctuation">:</span> foo<span class="token punctuation">(</span><span class="token punctuation">)</span> keywords must be strings
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> dict<span class="token punctuation">(</span><span class="token operator">**</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">)</span><span class="token punctuation">:</span> None<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">)</span><span class="token punctuation">:</span> None<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x4E0D;&#x4E00;&#x81F4;&#x6027;&#x5B58;&#x5728;&#x4E8E;Python&#x7684;&#x5176;&#x4ED6;&#x5B9E;&#x73B0;(Pypy, Jython, IronPython)&#xFF0C;&#x5728;Python3&#x4E2D;&#x88AB;&#x4FEE;&#x590D;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x53EF;&#x80FD;&#x662F;&#x4E2A;&#x7A81;&#x7834;&#x6027;&#x7684;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x5411;&#x4F60;&#x6307;&#x51FA;&#xFF0C;&#x6545;&#x610F;&#x7F16;&#x5199;&#x53EA;&#x80FD;&#x5728;&#x4E00;&#x79CD;&#x8BED;&#x8A00;&#x7248;&#x672C;&#x4E2D;&#x6216;&#x8005;&#x53EA;&#x5728;&#x7279;&#x5B9A;&#x7EA6;&#x675F;&#x6761;&#x4EF6;&#x4E0B;&#x624D;&#x80FD;&#x5DE5;&#x4F5C;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x65E0;&#x80FD;&#x7684;&#x4F53;&#x73B0;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x8BC4;&#x8BBA;</p>
+<blockquote>
+<p><code>dict(x.items() + y.items())</code>&#x5728;Python2&#x4E2D;&#x4ECD;&#x662F;&#x53EF;&#x8BFB;&#x6027;&#x6700;&#x5F3A;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x91CD;&#x8981;&#x3002;</p>
+</blockquote>
+<p>&#x6211;&#x7684;&#x56DE;&#x590D;&#xFF1A;&#x5BF9;&#x6211;&#x800C;&#x8A00;<code>merge_two_dicts(x, y)</code>&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x597D;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x524D;&#x5411;&#x517C;&#x5BB9;&#x7684;&#x95EE;&#x9898;&#xFF0C;Python2&#x5C06;&#x4F1A;&#x52A0;&#x901F;&#x88AB;&#x5E9F;&#x5F03;&#x3002;</p>
+<h3 id="&#x6027;&#x80FD;&#x8F83;&#x5DEE;&#x4F46;&#x6B63;&#x786E;&#x7684;&#x5199;&#x6CD5;">&#x6027;&#x80FD;&#x8F83;&#x5DEE;&#x4F46;&#x6B63;&#x786E;&#x7684;&#x5199;&#x6CD5;</h3>
+<p>&#x4EE5;&#x4E0B;&#x5199;&#x6CD5;&#x6027;&#x80FD;&#x8F83;&#x5DEE;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x662F;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x6BD4;&#x8D77;<code>copy</code>&#x548C;<code>update</code>&#x65B9;&#x6CD5;&#x4EE5;&#x53CA;&#x65B0;&#x7684;&#x5C55;&#x5F00;&#x65B9;&#x6CD5;&#xFF0C;&#x6027;&#x80FD;&#x4F1A;&#x5DEE;&#x8DDF;&#x591A;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x8FED;&#x4EE3;&#x4E86;&#x6BCF;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x4F46;&#x662F;&#x4FDD;&#x8BC1;&#x4E86;&#x4F18;&#x5148;&#x7EA7;&#xFF08;&#x540E;&#x9762;&#x7684;&#x5B57;&#x5178;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#xFF09;</p>
+<p>&#x4F60;&#x4E5F;&#x7528;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#x63A8;&#x5BFC;&#x4E2D;&#x624B;&#x52A8;&#x5408;&#x5E76;&#x5B57;&#x5178;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token punctuation">{</span>k<span class="token punctuation">:</span> v <span class="token keyword">for</span> d <span class="token keyword">in</span> dicts <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true"># iteritems in Python 2.7</span>
+</code></pre>
+<p>&#x6216;&#x8005;&#x5728;Python2.6&#x4E2D;&#xFF08;&#x6216;&#x8005;&#x66F4;&#x65E9;&#x5230;2.4&#x7684;&#x7248;&#x672C;&#xFF0C;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x88AB;&#x5F15;&#x5165;&#xFF09;:</p>
+<pre class="language-"><code class="lang-python">dict<span class="token punctuation">(</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> dicts <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>itertools.chain</code>&#x4E5F;&#x4F1A;&#x901A;&#x8FC7;&#x952E;&#x503C;&#x5BF9;&#x8FED;&#x4EE3;&#x7684;&#x65B9;&#x5F0F;&#x6B63;&#x786E;&#x5408;&#x5E76;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> itertools
+z <span class="token operator">=</span> dict<span class="token punctuation">(</span>itertools<span class="token punctuation">.</span>chain<span class="token punctuation">(</span>x<span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="&#x6027;&#x80FD;&#x5206;&#x6790;">&#x6027;&#x80FD;&#x5206;&#x6790;</h3>
+<p>&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x505A;&#x6027;&#x80FD;&#x5206;&#x6790;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> timeit
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF1A;Ubuntu 14.04</p>
+<p>Python 2.7 (system Python):</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> merge_two_dicts<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0.5726828575134277</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>k<span class="token punctuation">:</span> v <span class="token keyword">for</span> d <span class="token keyword">in</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">1.163769006729126</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> dict<span class="token punctuation">(</span>itertools<span class="token punctuation">.</span>chain<span class="token punctuation">(</span>x<span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">1.1614501476287842</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> dict<span class="token punctuation">(</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2.2345519065856934</span>
+</code></pre>
+<p>In Python 3.5 (deadsnakes PPA):</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token operator">**</span>x<span class="token punctuation">,</span> <span class="token operator">**</span>y<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0.4094954460160807</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> merge_two_dicts<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0.7881555100320838</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>k<span class="token punctuation">:</span> v <span class="token keyword">for</span> d <span class="token keyword">in</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">1.4525277839857154</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> dict<span class="token punctuation">(</span>itertools<span class="token punctuation">.</span>chain<span class="token punctuation">(</span>x<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2.3143140770262107</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> min<span class="token punctuation">(</span>timeit<span class="token punctuation">.</span>repeat<span class="token punctuation">(</span><span class="token keyword">lambda</span><span class="token punctuation">:</span> dict<span class="token punctuation">(</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">3.2069112799945287</span>
+</code></pre>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6E90;">&#x53C2;&#x8003;&#x8D44;&#x6E90;</h3>
+<ul>
+<li><a href="https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented/44509302#44509302" target="_blank">My explanation of Python&apos;s <strong>dictionary implementation</strong>, updated for 3.6.</a></li>
+<li><a href="https://stackoverflow.com/questions/1024847/add-new-keys-to-a-dictionary/27208535#27208535" target="_blank">Answer on how to add new keys to a dictionary</a></li>
+<li><a href="https://stackoverflow.com/questions/209840/map-two-lists-into-a-dictionary-in-python/33737067#33737067" target="_blank">Mapping two lists into a dictionary</a></li>
+<li>The official Python <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries" target="_blank">docs on dictionaries</a></li>
+<li><a href="https://www.youtube.com/watch?v=66P5FMkWoVU" target="_blank">The Dictionary Even Mightier</a> - talk by Brandon Rhodes at Pycon 2017</li>
+<li><a href="https://www.youtube.com/watch?v=npw4s1QTmPg" target="_blank">Modern Python Dictionaries, A Confluence of Great Ideas</a> - talk by Raymond Hettinger at Pycon 2017</li>
+</ul>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-05-23 22:51:50 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="6.calling-an-external-command-in-python.html" class="navigation navigation-prev " aria-label="Previous page: 6. 在Python中调用外部命令">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="9.how-do-i-sort-a-dictionary-by-value.html" class="navigation navigation-next " aria-label="Next page: 9. 如何根据值对字典排序">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"7. 如何用一行代码合并2个字典","level":"1.2.7","depth":2,"next":{"title":"9. 如何根据值对字典排序","level":"1.2.8","depth":2,"path":"stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md","ref":"stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md","articles":[]},"previous":{"title":"6. 在Python中调用外部命令","level":"1.2.6","depth":2,"path":"stackoverflow/6.calling-an-external-command-in-python.md","ref":"stackoverflow/6.calling-an-external-command-in-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"stackoverflow-python-top-qa","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"stackoverflow上票数最高的100个问题"},"file":{"path":"stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md","mtime":"2018-05-23T14:51:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-23T14:52:36.846Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

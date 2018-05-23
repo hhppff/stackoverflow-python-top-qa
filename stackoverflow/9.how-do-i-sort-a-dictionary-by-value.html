@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>7. 如何根据值对字典排序 · stackoverflow-python-top-qa</title>
+        <title>9. 如何根据值对字典排序 · stackoverflow-python-top-qa</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -71,7 +71,7 @@
 
     
     
-    <link rel="prev" href="6.calling-an-external-command-in-python.html" />
+    <link rel="prev" href="7.how-to-merge-two-dictionaries-in-a-single-expression.html" />
     
 
     <style>
@@ -230,12 +230,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.7" data-path="7.how-do-i-sort-a-dictionary-by-value.html">
+        <li class="chapter " data-level="1.2.7" data-path="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
             
-                <a href="7.how-do-i-sort-a-dictionary-by-value.html">
+                <a href="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
             
                     
-                    7. 如何根据值对字典排序
+                    7. 如何用一行代码合并2个字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.8" data-path="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                <a href="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                    
+                    9. 如何根据值对字典排序
             
                 </a>
             
@@ -278,7 +291,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >7. 如何根据值对字典排序</a>
+        <a href=".." >9. 如何根据值对字典排序</a>
     </h1>
 </div>
 
@@ -293,7 +306,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="7-&#x5982;&#x4F55;&#x6839;&#x636E;&#x503C;&#x5BF9;&#x5B57;&#x5178;&#x6392;&#x5E8F;">7. &#x5982;&#x4F55;&#x6839;&#x636E;&#x503C;&#x5BF9;&#x5B57;&#x5178;&#x6392;&#x5E8F;</h1>
+                                <h1 id="9-&#x5982;&#x4F55;&#x6839;&#x636E;&#x503C;&#x5BF9;&#x5B57;&#x5178;&#x6392;&#x5E8F;">9. &#x5982;&#x4F55;&#x6839;&#x636E;&#x503C;&#x5BF9;&#x5B57;&#x5178;&#x6392;&#x5E8F;</h1>
 <h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
 <p>&#x6211;&#x6709;&#x4E00;&#x4E2A;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x4E2D;&#x8BFB;&#x53D6;&#x503C;&#x7684;&#x5B57;&#x5178;:&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x6BB5;&#x548C;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x5B57;&#x6BB5;&#x3002;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x6BB5;&#x662F;&#x60DF;&#x4E00;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x662F;&#x5B57;&#x5178;&#x7684;key&#x3002;
 &#x6211;&#x53EF;&#x4EE5;&#x5BF9;&#x952E;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x4F55;&#x6839;&#x636E;&#x503C;&#x6392;&#x5E8F;&#x5462;?
@@ -330,7 +343,7 @@ d <span class="token operator">=</span> defaultdict<span class="token punctuatio
 <pre class="language-"><code class="lang-python">sorted<span class="token punctuation">(</span>d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
 <p>&#x8FD9;&#x5C06;&#x6839;&#x636E;&#x5B57;&#x5178;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x6761;&#x76EE;&#x7684;&#x503C;&#x6765;&#x5BF9;&#x5B57;&#x5178;&#x6392;&#x5E8F;&#xFF0C;&#x4ECE;&#x6700;&#x5C0F;&#x5230;&#x6700;&#x5927;&#x3002;</p>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-05-21 23:30:33 </span> </footer>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-05-23 22:51:11 </span> </footer>
                                 
                                 </section>
                             
@@ -357,7 +370,7 @@ d <span class="token operator">=</span> defaultdict<span class="token punctuatio
 
             
                 
-                <a href="6.calling-an-external-command-in-python.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 6. 在Python中调用外部命令">
+                <a href="7.how-to-merge-two-dictionaries-in-a-single-expression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 7. 如何用一行代码合并2个字典">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -369,7 +382,7 @@ d <span class="token operator">=</span> defaultdict<span class="token punctuatio
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7. 如何根据值对字典排序","level":"1.2.7","depth":2,"previous":{"title":"6. 在Python中调用外部命令","level":"1.2.6","depth":2,"path":"stackoverflow/6.calling-an-external-command-in-python.md","ref":"stackoverflow/6.calling-an-external-command-in-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"stackoverflow-python-top-qa","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"stackoverflow上票数最高的100个问题"},"file":{"path":"stackoverflow/7.how-do-i-sort-a-dictionary-by-value.md","mtime":"2018-05-21T15:30:33.141Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-21T15:32:34.779Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9. 如何根据值对字典排序","level":"1.2.8","depth":2,"previous":{"title":"7. 如何用一行代码合并2个字典","level":"1.2.7","depth":2,"path":"stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md","ref":"stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"stackoverflow-python-top-qa","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"stackoverflow上票数最高的100个问题"},"file":{"path":"stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md","mtime":"2018-05-23T14:51:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-23T14:52:36.846Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -12,4 +12,5 @@
     * [8. 如何创建一个不存在的目录](stackoverflow/8.how-can-i-create-a-directory-if-it-does-not-exist.md)
     * [9. 如何根据值对字典排序](stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md)
     * [10. Python中有判断字符串包含(contains)子串的方法吗？](stackoverflow/10.does-python-have-a-string-contains-substring-method.md)
+    * [12. 如何检查列表是否为空](stackoverflow/12.how-do-i-check-if-a-list-is-empty.md)
 

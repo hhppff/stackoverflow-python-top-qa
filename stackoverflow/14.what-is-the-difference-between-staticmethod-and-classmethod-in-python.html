@@ -1,0 +1,522 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>14. Python中@staticmethod与@classmethod的区别 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="13.difference-between-append-vs-extend-list-methods-in-python.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://geektutu.com/series" target="_blank" class="custom-link">极客兔兔的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/geekcircle/stackoverflow-python-top-qa" target="_blank" class="custom-link">stackoverflow-python-top-qa</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    StackOverflow
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.what-does-the-yield-keyword-do.html">
+            
+                <a href="1.what-does-the-yield-keyword-do.html">
+            
+                    
+                    1. yield关键字的作用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2.what-are-metaclasses-in-python.html">
+            
+                <a href="2.what-are-metaclasses-in-python.html">
+            
+                    
+                    2. 什么是元类(metaclass)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                <a href="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                    
+                    3. Python中有三目运算符吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4.how-to-check-whether-a-file-exists.html">
+            
+                <a href="4.how-to-check-whether-a-file-exists.html">
+            
+                    
+                    4. 如何检查一个文件是否存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5.what-does-if-name-main-do.html">
+            
+                <a href="5.what-does-if-name-main-do.html">
+            
+                    
+                    5. if name == "main": 这句话做了什么事情
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6.calling-an-external-command-in-python.html">
+            
+                <a href="6.calling-an-external-command-in-python.html">
+            
+                    
+                    6. 在Python中调用外部命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                <a href="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                    
+                    7. 如何用一行代码合并2个字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                <a href="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                    
+                    8. 如何创建一个不存在的目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                <a href="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                    
+                    9. 如何根据值对字典排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="10.does-python-have-a-string-contains-substring-method.html">
+            
+                <a href="10.does-python-have-a-string-contains-substring-method.html">
+            
+                    
+                    10. Python中有判断字符串包含(contains)子串的方法吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                <a href="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                    
+                    12. 如何检查列表是否为空
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                <a href="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                    
+                    13. list方法append()与extend()的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.13" data-path="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                <a href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                    
+                    14. Python中@staticmethod与@classmethod的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >14. Python中@staticmethod与@classmethod的区别</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="14-python&#x4E2D;staticmethod&#x4E0E;classmethod&#x7684;&#x533A;&#x522B;">14. Python&#x4E2D;@staticmethod&#x4E0E;@classmethod&#x7684;&#x533A;&#x522B;</h1>
+<h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
+<p>&#x88AB; <code>@staticmethod</code> &#x548C;&#x88AB; <code>@classmethod</code>&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</p>
+<h2 id="&#x56DE;&#x7B54;&#x4E00;">&#x56DE;&#x7B54;&#x4E00;</h2>
+<p>&#x5199;&#x70B9;&#x4F8B;&#x5B50;&#x52A9;&#x4E8E;&#x7406;&#x89E3;&#xFF0C;&#x6CE8;&#x610F;&#x5BF9;<code>foo</code>&#x8C03;&#x7528;&#x7684;&#x533A;&#x522B;&#x3002; <code>class_foo</code>&#x4E0E; <code>static_foo</code>&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">&quot;executing foo(%s,%s)&quot;</span><span class="token operator">%</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>x<span class="token punctuation">)</span>
+
+    @classmethod
+    <span class="token keyword">def</span> <span class="token function">class_foo</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">&quot;executing class_foo(%s,%s)&quot;</span><span class="token operator">%</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span>x<span class="token punctuation">)</span>
+
+    @staticmethod
+    <span class="token keyword">def</span> <span class="token function">static_foo</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">&quot;executing static_foo(%s)&quot;</span><span class="token operator">%</span>x
+
+a<span class="token operator">=</span>A<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x901A;&#x5E38;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;<code>a</code>&#x9690;&#x5F0F;&#x5730;&#x88AB;&#x5F53;&#x505A;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;</p>
+<pre class="language-"><code class="lang-python">a<span class="token punctuation">.</span>foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># executing foo(&lt;__main__.A object at 0xb7dbef0c&gt;,1)</span>
+</code></pre>
+<p><strong>&#x4F7F;&#x7528;&#x7C7B;&#x65B9;&#x6CD5;(classmethod)</strong>&#xFF0C;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684;class&#x9690;&#x5F0F;&#x5730;&#x88AB;&#x5F53;&#x505A;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;</p>
+<pre class="language-"><code class="lang-python">a<span class="token punctuation">.</span>class_foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)</span>
+</code></pre>
+<p>&#x4F60;&#x4E5F;&#x4F60;&#x80FD;&#x4F7F;&#x7528;class&#x53BB;&#x8C03;&#x7528;<code>class_foo</code>&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5B9A;&#x4E49;&#x4E86;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;&#x4E3A;&#x7C7B;&#x65B9;&#x6CD5;(classmethod)&#xFF0C;&#x5F88;&#x53EF;&#x80FD;&#x4F60;&#x60F3;&#x901A;&#x8FC7;&#x7C7B;&#x53BB;&#x8C03;&#x7528;&#x5B83;&#x800C;&#x975E;&#x901A;&#x8FC7;&#x7C7B;&#x5B9E;&#x4F8B;&#x3002;<code>A.foo(1)</code>&#x5C06;&#x4F1A;&#x5F15;&#x53D1;&#x7C7B;&#x578B;&#x9519;&#x8BEF;(TypeError)&#xFF0C;&#x4F46;&#x662F;<code>A.class_foo(1)</code>&#x662F;OK&#x7684;&#x3002;</p>
+<pre class="language-"><code class="lang-python">A<span class="token punctuation">.</span>class_foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)</span>
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x4E00;&#x79CD;&#x573A;&#x666F;&#x662F;&#x521B;&#x5EFA;<a href="https://stackoverflow.com/questions/1950414/what-does-classmethod-do-in-this-code/1950927#1950927" target="_blank">&#x53EF;&#x7EE7;&#x627F;&#x7684;&#x66FF;&#x4EE3;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</a></p>
+<p><strong>&#x4F7F;&#x7528;&#x9759;&#x6001;&#x65B9;&#x6CD5;(staticmethod)</strong>, <code>self</code>(&#x5B9E;&#x4F8B;)&#x548C;<code>cls</code>(&#x7C7B;)&#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x9690;&#x5F0F;&#x5730;&#x5F53;&#x505A;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;&#x9664;&#x4E86;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x6216;&#x8005;&#x7C7B;&#x6765;&#x8C03;&#x7528;&#x4EE5;&#x5916;&#xFF0C;&#x8FD9;&#x7C7B;&#x65B9;&#x6CD5;&#x8868;&#x73B0;&#x548C;&#x666E;&#x901A;&#x7684;&#x51FD;&#x6570;&#x65E0;&#x5F02;&#x3002;</p>
+<pre class="language-"><code class="lang-python">a<span class="token punctuation">.</span>static_foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># executing static_foo(1)</span>
+
+A<span class="token punctuation">.</span>static_foo<span class="token punctuation">(</span><span class="token string">&apos;hi&apos;</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># executing static_foo(hi)</span>
+</code></pre>
+<p>&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x7528;&#x6765;&#x805A;&#x5408;&#x4E00;&#x4E9B;&#x548C;&#x7C7B;&#x6709;&#x903B;&#x8F91;&#x5173;&#x7CFB;&#x7684;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;&#x3002;</p>
+<p><code>foo</code>&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x4F60;&#x8C03;&#x7528;<code>a.foo</code>&#x65F6;&#x5E76;&#x6CA1;&#x6709;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x662F;&#x83B7;&#x5F97;&#x4E86;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x201C;&#x90E8;&#x5206;&#x5E94;&#x7528;(partially applied)&#x201D;&#x7248;&#x672C;&#xFF0C;&#x5E76;&#x5C06;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7ED1;&#x5B9A;&#x4E3A;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x3002;<code>foo</code>&#x9700;&#x4F20;&#x5165;2&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4F46;&#x662F;<code>a.foo</code>&#x4EC5;&#x9700;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x3002;</p>
+<p><code>a</code>&#x88AB;&#x7ED1;&#x5B9A;&#x5230;<code>foo</code>&#xFF0C;&#x5982;&#x4E0B;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>foo<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &lt;bound method A.foo of &lt;__main__.A object at 0xb7d52f0c&gt;&gt;</span>
+</code></pre>
+<p><code>a.class_foo</code>&#xFF0C;<code>a</code>&#x5E76;&#x6CA1;&#x6709;&#x7ED1;&#x5B9A;&#x5230;<code>class_foo</code>&#xFF0C;&#x800C;&#x662F; <code>class A</code>&#x7ED1;&#x5B9A;&#x5230;<code>class_foo</code></p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>class_foo<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &lt;bound method type.class_foo of &lt;class &apos;__main__.A&apos;&gt;&gt;</span>
+</code></pre>
+<p>&#x5BF9;&#x4E8E;staticmethod&#xFF0C;&#x5373;&#x4F7F;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;<code>a.static_foo</code>&#x4EC5;&#x8FD4;&#x56DE;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x7684;&#x51FD;&#x6570;&#x3002;<code>static_foo</code>&#x8981;&#x6C42;&#x4F20;&#x5165;1&#x4E2A;&#x53C2;&#x6570;&#xFF0C;<code>a.static_foo</code>&#x540C;&#x6837;&#x8981;&#x6C42;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>static_foo<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &lt;function static_foo at 0xb7d479cc&gt;</span>
+</code></pre>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x4F60;&#x4F7F;&#x7528;<code>class A</code>&#x53BB;&#x8C03;&#x7528;<code>static_foo</code>&#x65F6;&#x4E5F;&#x4E00;&#x6837;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">print</span><span class="token punctuation">(</span>A<span class="token punctuation">.</span>static_foo<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &lt;function static_foo at 0xb7d479cc&gt;</span>
+</code></pre>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-05 00:26:35 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="13.difference-between-append-vs-extend-list-methods-in-python.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 13. list方法append()与extend()的区别">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"14. Python中@staticmethod与@classmethod的区别","level":"1.2.13","depth":2,"previous":{"title":"13. list方法append()与extend()的区别","level":"1.2.12","depth":2,"path":"stackoverflow/13.difference-between-append-vs-extend-list-methods-in-python.md","ref":"stackoverflow/13.difference-between-append-vs-extend-list-methods-in-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.md","mtime":"2018-06-04T16:26:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T16:27:15.745Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -297,6 +297,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.12" data-path="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                <a href="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                    
+                    13. list方法append()与extend()的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                <a href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                    
+                    14. Python中@staticmethod与@classmethod的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -357,7 +383,8 @@
 <span class="token keyword">if</span> <span class="token operator">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>directory<span class="token punctuation">)</span><span class="token punctuation">:</span>
     os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>directory<span class="token punctuation">)</span>
 </code></pre>
-<p>&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;race condition - &#x5982;&#x679C;&#x76EE;&#x5F55;&#x5728;<code>os.path.exists</code>&#x548C;<code>os.makedirs</code>&#x4E4B;&#x95F4;&#x88AB;&#x521B;&#x5EFA;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;<code>os.makedirs</code>&#x5C06;&#x4F1A;&#x5931;&#x8D25;&#x5E76;&#x4EA7;&#x751F;<code>OSError</code>&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x3002;&#x7136;&#x800C;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4EC5;&#x4EC5;catch&#x4F4F;&#x8FD9;&#x4E2A;<code>OSSError</code>&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x7684;&#x8BDD;&#x5E76;&#x4E0D;&#x662F;&#x5341;&#x5206;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x4F1A;&#x5FFD;&#x7565;&#x6389;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x9519;&#x8BEF;&#x539F;&#x56E0;&#xFF0C;&#x6BD4;&#x5982;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x6743;&#x9650;&#x6216;&#x8005;&#x78C1;&#x76D8;&#x5DF2;&#x6EE1;&#x3002;<br>&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;catch&#x4F4F;&#x8FD9;&#x4E2A;error&#x5E76;&#x4E14;&#x68C0;&#x67E5;&#x4ED6;&#x7684;errorcode&#xFF08;see <a href="https://stackoverflow.com/questions/273698/is-there-a-cross-platform-way-of-getting-information-from-pythons-oserror" target="_blank">Is there a cross-platform way of getting information from Python&#x2019;s OSError</a>&#xFF09;:</p>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;race condition - &#x5982;&#x679C;&#x76EE;&#x5F55;&#x5728;<code>os.path.exists</code>&#x548C;<code>os.makedirs</code>&#x4E4B;&#x95F4;&#x88AB;&#x521B;&#x5EFA;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;<code>os.makedirs</code>&#x5C06;&#x4F1A;&#x5931;&#x8D25;&#x5E76;&#x4EA7;&#x751F;<code>OSError</code>&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x3002;&#x7136;&#x800C;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4EC5;&#x4EC5;catch&#x4F4F;&#x8FD9;&#x4E2A;<code>OSSError</code>&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x7684;&#x8BDD;&#x5E76;&#x4E0D;&#x662F;&#x5341;&#x5206;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x4F1A;&#x5FFD;&#x7565;&#x6389;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x9519;&#x8BEF;&#x539F;&#x56E0;&#xFF0C;&#x6BD4;&#x5982;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x6743;&#x9650;&#x6216;&#x8005;&#x78C1;&#x76D8;&#x5DF2;&#x6EE1;&#x3002;</p>
+<p>&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;catch&#x4F4F;&#x8FD9;&#x4E2A;error&#x5E76;&#x4E14;&#x68C0;&#x67E5;&#x4ED6;&#x7684;errorcode&#xFF08;see <a href="https://stackoverflow.com/questions/273698/is-there-a-cross-platform-way-of-getting-information-from-pythons-oserror" target="_blank">Is there a cross-platform way of getting information from Python&#x2019;s OSError</a>&#xFF09;:</p>
 <pre class="language-"><code class="lang-python"><span class="token keyword">import</span> os<span class="token punctuation">,</span> errno
 
 <span class="token keyword">try</span><span class="token punctuation">:</span>
@@ -368,7 +395,7 @@
 </code></pre>
 <p>&#x5F53;&#x7136;&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x7B2C;&#x4E8C;&#x6B21;&#x68C0;&#x67E5;<code>os.path.exists</code>&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x6709;&#x4EBA;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x68C0;&#x67E5;&#x4E4B;&#x540E;&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x7B2C;&#x4E8C;&#x6B21;&#x68C0;&#x67E5;&#x4E4B;&#x524D;&#x53C8;&#x628A;&#x76EE;&#x5F55;&#x5220;&#x4E86;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x662F;&#x88AB;&#x800D;&#x4E86;&#x3002;  </p>
 <p>&#x7EFC;&#x4E0A;&#xFF0C;&#x5E94;&#x8BE5;&#x4F9D;&#x636E;&#x5177;&#x4F53;&#x7684;&#x60C5;&#x51B5;&#x6765;&#x51B3;&#x5B9A;&#x91C7;&#x7528;&#x54EA;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;</p>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-05-30 22:44:12 </span> </footer>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-01 23:57:00 </span> </footer>
                                 
                                 </section>
                             
@@ -411,7 +438,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8. 如何创建一个不存在的目录","level":"1.2.8","depth":2,"next":{"title":"9. 如何根据值对字典排序","level":"1.2.9","depth":2,"path":"stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md","ref":"stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md","articles":[]},"previous":{"title":"7. 如何用一行代码合并2个字典","level":"1.2.7","depth":2,"path":"stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md","ref":"stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/8.how-can-i-create-a-directory-if-it-does-not-exist.md","mtime":"2018-05-30T14:44:12.620Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-30T15:21:33.465Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8. 如何创建一个不存在的目录","level":"1.2.8","depth":2,"next":{"title":"9. 如何根据值对字典排序","level":"1.2.9","depth":2,"path":"stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md","ref":"stackoverflow/9.how-do-i-sort-a-dictionary-by-value.md","articles":[]},"previous":{"title":"7. 如何用一行代码合并2个字典","level":"1.2.7","depth":2,"path":"stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md","ref":"stackoverflow/7.how-to-merge-two-dictionaries-in-a-single-expression.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/8.how-can-i-create-a-directory-if-it-does-not-exist.md","mtime":"2018-06-01T15:57:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-04T16:27:15.745Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

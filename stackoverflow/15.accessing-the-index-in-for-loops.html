@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>11. 如何列出一个文件夹下的所有文件 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
+        <title>15. 如何访问for循环中的下标 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -70,10 +70,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="12.how-do-i-check-if-a-list-is-empty.html" />
     
-    
-    <link rel="prev" href="10.does-python-have-a-string-contains-substring-method.html" />
+    <link rel="prev" href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html" />
     
 
     <style>
@@ -284,7 +282,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.11" data-path="11.how-do-i-list-all-files-of-a-directory.html">
+        <li class="chapter " data-level="1.2.11" data-path="11.how-do-i-list-all-files-of-a-directory.html">
             
                 <a href="11.how-do-i-list-all-files-of-a-directory.html">
             
@@ -336,7 +334,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.15" data-path="15.accessing-the-index-in-for-loops.html">
+        <li class="chapter active" data-level="1.2.15" data-path="15.accessing-the-index-in-for-loops.html">
             
                 <a href="15.accessing-the-index-in-for-loops.html">
             
@@ -384,7 +382,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >11. 如何列出一个文件夹下的所有文件</a>
+        <a href=".." >15. 如何访问for循环中的下标</a>
     </h1>
 </div>
 
@@ -399,41 +397,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="11-&#x5982;&#x4F55;&#x5217;&#x51FA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;">11. &#x5982;&#x4F55;&#x5217;&#x51FA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;</h1>
-<h2 id="&#x95EE;&#x9898;">&#x95EE;&#x9898;</h2>
-<p>&#x6211;&#x600E;&#x4E48;&#x624D;&#x80FD;&#x5217;&#x51FA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x628A;&#x5B83;&#x4EEC;&#x6DFB;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x4E2D;&#x3002;<a href="https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory" target="_blank">&#x94FE;&#x63A5;</a></p>
+                                <h1 id="15-&#x5982;&#x4F55;&#x8BBF;&#x95EE;for&#x5FAA;&#x73AF;&#x4E2D;&#x7684;&#x4E0B;&#x6807;">15. &#x5982;&#x4F55;&#x8BBF;&#x95EE;for&#x5FAA;&#x73AF;&#x4E2D;&#x7684;&#x4E0B;&#x6807;</h1>
+<h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
+<p>&#x5982;&#x4E0B;&#x9762;&#x6240;&#x793A;&#xFF0C;&#x6211;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x8BBF;&#x95EE;&#x5217;&#x8868;&#x672C;&#x8EAB;&#x7684;&#x7D22;&#x5F15;&#xFF1F;</p>
+<pre class="language-"><code class="lang-python">ints <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x5F53;&#x6211;&#x4F7F;&#x7528;for&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x5B83;&#x65F6;&#xFF0C;&#x6211;&#x5982;&#x4F55;&#x8BBF;&#x95EE;&#x5FAA;&#x73AF;&#x7D22;&#x5F15;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x4ECE;1&#x5230;5&#xFF1F;
+<a href="https://stackoverflow.com/questions/522563/accessing-the-index-in-for-loops" target="_blank">&#x94FE;&#x63A5;</a></p>
 <h2 id="&#x56DE;&#x7B54;&#x4E00;">&#x56DE;&#x7B54;&#x4E00;</h2>
-<p><code>os.listdir()</code>&#x80FD;&#x591F;&#x5F97;&#x5230;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#xFF0C;&#x5305;&#x62EC;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x4F60;&#x53EA;&#x60F3;&#x8981;&#x6587;&#x4EF6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7528;<code>os.path</code>&#x8FC7;&#x6EE4;&#x51FA;&#x6765;&#x3002;</p>
-<pre class="language-"><code class="lang-python"><span class="token keyword">from</span> os <span class="token keyword">import</span> listdir
-<span class="token keyword">from</span> os<span class="token punctuation">.</span>path <span class="token keyword">import</span> isfile<span class="token punctuation">,</span> join
-onlyfiles <span class="token operator">=</span> <span class="token punctuation">[</span>f <span class="token keyword">for</span> f <span class="token keyword">in</span> listdir<span class="token punctuation">(</span>mypath<span class="token punctuation">)</span> <span class="token keyword">if</span> isfile<span class="token punctuation">(</span>join<span class="token punctuation">(</span>mypath<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<p>&#x4F7F;&#x7528;&#x9644;&#x52A0;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#x7D22;&#x5F15;&#x53D8;&#x91CF;(&#x901A;&#x5E38;&#x5728;C&#x6216;PHP&#x7B49;&#x8BED;&#x8A00;&#x4E2D;&#x4F7F;&#x7528;)&#x88AB;&#x89C6;&#x4E3A;&#x975E;python&#x5316;&#x7684;&#x3002;</p>
+<p>&#x66F4;&#x597D;&#x7684;&#x9009;&#x62E9;&#x662F;&#x4F7F;&#x7528;&#x5185;&#x7F6E;&#x51FD;&#x6570;enumerate()&#xFF0C;&#x5728;Python2&#x548C;3&#x4E2D;&#x5747;&#x53EF;&#x4F7F;&#x7528;:</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">for</span> idx<span class="token punctuation">,</span> val <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>ints<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
 </code></pre>
-<p>&#x6216;&#x8005;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>os.walk</code>&#xFF0C;&#x4ED6;&#x5C06;<code>yield</code>2&#x4E2A;&#x5217;&#x8868;&#x5BF9;&#x4E8E;&#x8BBF;&#x95EE;&#x5230;&#x7684;&#x6BCF;&#x4E2A;&#x76EE;&#x5F55;&#x3002;&#x4E3A;&#x4F60;&#x62C6;&#x5206;&#x6210;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;2&#x4E2A;&#x76EE;&#x5F55;&#x3002;&#x5982;&#x679C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x9876;&#x5C42;&#x76EE;&#x5F55;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x7B2C;&#x4E00;&#x6B21;<code>yield</code>&#x7684;&#x65F6;&#x5019;<code>break</code></p>
-<pre class="language-"><code class="lang-python"><span class="token keyword">from</span> os <span class="token keyword">import</span> walk
-
-f <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>dirpath<span class="token punctuation">,</span> dirnames<span class="token punctuation">,</span> filenames<span class="token punctuation">)</span> <span class="token keyword">in</span> walk<span class="token punctuation">(</span>mypath<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    f<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>filenames<span class="token punctuation">)</span>
-    <span class="token keyword">break</span>
-</code></pre>
-<p>&#x6700;&#x540E;&#xFF0C;&#x6B63;&#x5982;&#x4F8B;&#x5B50;&#x6240;&#x793A;&#xFF0C;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5F53;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>.extend</code>&#x6216;&#x8005;</p>
-<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> q <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> w <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> q <span class="token operator">=</span> q <span class="token operator">+</span> w
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> q
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-</code></pre>
-<p>&#x4E2A;&#x4EBA;&#x66F4;&#x503E;&#x5411;&#x4F7F;&#x7528;<code>.extend</code></p>
-<h2 id="&#x56DE;&#x7B54;&#x4E8C;">&#x56DE;&#x7B54;&#x4E8C;</h2>
-<p>&#x6211;&#x66F4;&#x503E;&#x5411;&#x4E8E;&#x4F7F;&#x7528; <code>glob</code>&#x6A21;&#x5757;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x3002;</p>
-<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> glob
-<span class="token keyword">print</span><span class="token punctuation">(</span>glob<span class="token punctuation">.</span>glob<span class="token punctuation">(</span><span class="token string">&quot;/home/adam/*.txt&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
-<p>&#x5B83;&#x5C06;&#x8FD4;&#x56DE;&#x67E5;&#x8BE2;&#x5230;&#x7684;&#x5217;&#x8868;</p>
-<pre class="language-"><code class="lang-python"><span class="token punctuation">[</span><span class="token string">&apos;/home/adam/file1.txt&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;/home/adam/file2.txt&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span>
-</code></pre>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-13 21:01:01 </span> </footer>
+<p>&#x67E5;&#x770B;<a href="https://www.python.org/dev/peps/pep-0279/" target="_blank">PEP 279</a>&#x4E86;&#x89E3;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x3002;</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-13 21:10:40 </span> </footer>
                                 
                                 </section>
                             
@@ -460,14 +438,10 @@ f <span class="token operator">=</span> <span class="token punctuation">[</span>
 
             
                 
-                <a href="10.does-python-have-a-string-contains-substring-method.html" class="navigation navigation-prev " aria-label="Previous page: 10. Python中有判断字符串包含(contains)子串的方法吗？">
+                <a href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 14. Python中@staticmethod与@classmethod的区别">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="12.how-do-i-check-if-a-list-is-empty.html" class="navigation navigation-next " aria-label="Next page: 12. 如何检查列表是否为空">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -476,7 +450,7 @@ f <span class="token operator">=</span> <span class="token punctuation">[</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"11. 如何列出一个文件夹下的所有文件","level":"1.2.11","depth":2,"next":{"title":"12. 如何检查列表是否为空","level":"1.2.12","depth":2,"path":"stackoverflow/12.how-do-i-check-if-a-list-is-empty.md","ref":"stackoverflow/12.how-do-i-check-if-a-list-is-empty.md","articles":[]},"previous":{"title":"10. Python中有判断字符串包含(contains)子串的方法吗？","level":"1.2.10","depth":2,"path":"stackoverflow/10.does-python-have-a-string-contains-substring-method.md","ref":"stackoverflow/10.does-python-have-a-string-contains-substring-method.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/11.how-do-i-list-all-files-of-a-directory.md","mtime":"2018-06-13T13:01:01.971Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-13T13:12:48.043Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"15. 如何访问for循环中的下标","level":"1.2.15","depth":2,"previous":{"title":"14. Python中@staticmethod与@classmethod的区别","level":"1.2.14","depth":2,"path":"stackoverflow/14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.md","ref":"stackoverflow/14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/15.accessing-the-index-in-for-loops.md","mtime":"2018-06-13T13:10:40.751Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-13T13:12:48.043Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

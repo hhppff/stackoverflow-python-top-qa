@@ -349,6 +349,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.16" data-path="16.using-global-variables-in-a-function.html">
+            
+                <a href="16.using-global-variables-in-a-function.html">
+            
+                    
+                    16. 如何在函数中使用全局变量
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -757,9 +770,9 @@ f <span class="token operator">=</span> Foo<span class="token punctuation">(</sp
 <p>&#x73B0;&#x5728;&#x6700;&#x5927;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x4E48;&#x6666;&#x6DA9;&#x7684;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x7684;&#x7279;&#x6027;&#xFF1F;</p>
 <p>&#x901A;&#x5E38;&#x4E0D;&#x8981;&#x7528;&#xFF1A;</p>
 <blockquote>
-<p>&#x5143;&#x7C7B;&#x7684;&#x6DF1;&#x9B54;&#x6CD5;&#xFF0C;99%&#x7684;&#x7528;&#x6237;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x5B83;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5728;&#x60F3;&#x662F;&#x5426;&#x9700;&#x8981;&#x5B83;&#x4EEC;&#xFF0C;&#x5C31;&#x4E0D;&#x8981;&#x7528;&#xFF08;&#x9700;&#x8981;&#x5143;&#x7C7B;&#x7684;&#x4EBA;&#x786E;&#x5207;&#x5730;&#x77E5;&#x9053;&#x9700;&#x8981;&#x5B83;&#xFF0C;&#x65E0;&#x9700;&#x89E3;&#x91CA;&#xFF09;&#x3002;</p>
+<p>&#x5143;&#x7C7B;&#x662F;&#x6DF1;&#x9B54;&#x6CD5;&#xFF0C;99%&#x7684;&#x7528;&#x6237;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x5B83;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5728;&#x60F3;&#x662F;&#x5426;&#x9700;&#x8981;&#x5B83;&#x4EEC;&#xFF0C;&#x5C31;&#x4E0D;&#x8981;&#x7528;&#xFF08;&#x9700;&#x8981;&#x5143;&#x7C7B;&#x7684;&#x4EBA;&#x786E;&#x5207;&#x5730;&#x77E5;&#x9053;&#x9700;&#x8981;&#x5B83;&#xFF0C;&#x65E0;&#x9700;&#x89E3;&#x91CA;&#xFF09;&#x3002;
+<em>Python Guru Tim Peters</em></p>
 </blockquote>
-<p><em>Python Guru Tim Peters</em></p>
 <p>&#x5143;&#x7C7B;&#x4E3B;&#x8981;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x662F;&#x521B;&#x5EFA;API&#xFF0C;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x4F8B;&#x5B50;&#x662F;Django&#x7684;ORM&#x3002;</p>
 <p>&#x5B83;&#x5141;&#x8BB8;&#x4F60;&#x53BB;&#x8FD9;&#x6837;&#x5B9A;&#x4E49;&#xFF1A;</p>
 <pre class="language-"><code class="lang-python"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -810,7 +823,7 @@ f <span class="token operator">=</span> Foo<span class="token punctuation">(</sp
 </code></pre>
 <p>Python3&#x4E2D;&#x5143;&#x7C7B;&#x6709;2&#x4E2A;&#x5173;&#x952E;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
 <ul>
-<li><code>__prepare__</code> </li>
+<li><code>__prepare__</code></li>
 <li><code>__new__</code></li>
 </ul>
 <p><code>__prepare__</code>&#x8BA9;&#x4F60;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5B57;&#x5178;&#xFF08;&#x4F8B;&#x5982;<code>OrderedDict</code>&#xFF09;&#x4F5C;&#x4E3A;&#x5143;&#x7C7B;&#x521B;&#x5EFA;&#x65F6;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x3002;&#x65E0;&#x8BBA;&#x9009;&#x62E9;&#x4EC0;&#x4E48;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x90FD;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;<code>__prepare__</code>&#xFF0C;&#x5C06;&#x4F1A;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;<code>dict</code>&#x3002;</p>
@@ -901,7 +914,7 @@ ExampleSibling <span class="token operator">=</span> Example <span class="token 
 <span class="token keyword">print</span> ExampleSibling
 <span class="token keyword">print</span> ExampleSibling<span class="token punctuation">.</span>__mro__
 </code></pre>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-14 01:18:32 </span> </footer>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-17 23:15:15 </span> </footer>
                                 
                                 </section>
                             
@@ -944,7 +957,7 @@ ExampleSibling <span class="token operator">=</span> Example <span class="token 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. 什么是元类(metaclass)","level":"1.2.2","depth":2,"next":{"title":"3. Python中有三目运算符吗","level":"1.2.3","depth":2,"path":"stackoverflow/3.does-python-have-a-ternary-conditional-operator.md","ref":"stackoverflow/3.does-python-have-a-ternary-conditional-operator.md","articles":[]},"previous":{"title":"1. yield关键字的作用","level":"1.2.1","depth":2,"path":"stackoverflow/1.what-does-the-yield-keyword-do.md","ref":"stackoverflow/1.what-does-the-yield-keyword-do.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/2.what-are-metaclasses-in-python.md","mtime":"2018-06-13T17:18:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-13T17:19:10.900Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2. 什么是元类(metaclass)","level":"1.2.2","depth":2,"next":{"title":"3. Python中有三目运算符吗","level":"1.2.3","depth":2,"path":"stackoverflow/3.does-python-have-a-ternary-conditional-operator.md","ref":"stackoverflow/3.does-python-have-a-ternary-conditional-operator.md","articles":[]},"previous":{"title":"1. yield关键字的作用","level":"1.2.1","depth":2,"path":"stackoverflow/1.what-does-the-yield-keyword-do.md","ref":"stackoverflow/1.what-does-the-yield-keyword-do.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/2.what-are-metaclasses-in-python.md","mtime":"2018-06-17T15:15:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-17T15:25:41.566Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

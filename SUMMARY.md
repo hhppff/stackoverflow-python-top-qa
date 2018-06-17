@@ -17,4 +17,5 @@
     * [13. list方法append()与extend()的区别](stackoverflow/13.difference-between-append-vs-extend-list-methods-in-python.md)
     * [14. Python中@staticmethod与@classmethod的区别](stackoverflow/14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.md)
     * [15. 如何访问for循环中的下标](stackoverflow/15.accessing-the-index-in-for-loops.md)
+    * [16. 如何在函数中使用全局变量](stackoverflow/16.using-global-variables-in-a-function.md)
 

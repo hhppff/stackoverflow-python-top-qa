@@ -1,0 +1,1078 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>17. 如何创建连续调用的函数装饰器 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="16.using-global-variables-in-a-function.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://geektutu.com/series" target="_blank" class="custom-link">极客兔兔的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/geekcircle/stackoverflow-python-top-qa" target="_blank" class="custom-link">stackoverflow-python-top-qa</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    StackOverflow
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.what-does-the-yield-keyword-do.html">
+            
+                <a href="1.what-does-the-yield-keyword-do.html">
+            
+                    
+                    1. yield关键字的作用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2.what-are-metaclasses-in-python.html">
+            
+                <a href="2.what-are-metaclasses-in-python.html">
+            
+                    
+                    2. 什么是元类(metaclass)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                <a href="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                    
+                    3. Python中有三目运算符吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4.how-to-check-whether-a-file-exists.html">
+            
+                <a href="4.how-to-check-whether-a-file-exists.html">
+            
+                    
+                    4. 如何检查一个文件是否存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5.what-does-if-name-main-do.html">
+            
+                <a href="5.what-does-if-name-main-do.html">
+            
+                    
+                    5. if name == "main": 这句话做了什么事情
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6.calling-an-external-command-in-python.html">
+            
+                <a href="6.calling-an-external-command-in-python.html">
+            
+                    
+                    6. 在Python中调用外部命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                <a href="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                    
+                    7. 如何用一行代码合并2个字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                <a href="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                    
+                    8. 如何创建一个不存在的目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                <a href="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                    
+                    9. 如何根据值对字典排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="10.does-python-have-a-string-contains-substring-method.html">
+            
+                <a href="10.does-python-have-a-string-contains-substring-method.html">
+            
+                    
+                    10. Python中有判断字符串包含(contains)子串的方法吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="11.how-do-i-list-all-files-of-a-directory.html">
+            
+                <a href="11.how-do-i-list-all-files-of-a-directory.html">
+            
+                    
+                    11. 如何列出一个文件夹下的所有文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                <a href="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                    
+                    12. 如何检查列表是否为空
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                <a href="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                    
+                    13. list方法append()与extend()的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                <a href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                    
+                    14. Python中@staticmethod与@classmethod的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="15.accessing-the-index-in-for-loops.html">
+            
+                <a href="15.accessing-the-index-in-for-loops.html">
+            
+                    
+                    15. 如何访问for循环中的下标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="16.using-global-variables-in-a-function.html">
+            
+                <a href="16.using-global-variables-in-a-function.html">
+            
+                    
+                    16. 如何在函数中使用全局变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.17" data-path="17.how-to-make-a-chain-of-function-decorators.html">
+            
+                <a href="17.how-to-make-a-chain-of-function-decorators.html">
+            
+                    
+                    17. 如何创建连续调用的函数装饰器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >17. 如何创建连续调用的函数装饰器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="17-&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x8FDE;&#x7EED;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x88C5;&#x9970;&#x5668;">17. &#x5982;&#x4F55;&#x521B;&#x5EFA;&#x8FDE;&#x7EED;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x88C5;&#x9970;&#x5668;</h1>
+<h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
+<p>&#x5728;Python&#x4E2D;&#x5982;&#x4F55;&#x521B;&#x5EFA;2&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x5B8C;&#x6210;&#x5982;&#x4E0B;&#x529F;&#x80FD;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">@makebold
+@makeitalic
+<span class="token keyword">def</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">return</span> <span class="token string">&quot;Hello&quot;</span>
+</code></pre>
+<p>&#x5C06;&#x8FD4;&#x56DE;</p>
+<pre class="language-"><code class="lang-python"><span class="token string">&quot;&lt;b&gt;&lt;i&gt;Hello&lt;/i&gt;&lt;/b&gt;&quot;</span>
+</code></pre>
+<p>&#x6211;&#x5E76;&#x975E;&#x5728;&#x771F;&#x5B9E;&#x7684;&#x5E94;&#x7528;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53BB;&#x6784;&#x9020;HTML&#xFF0C;&#x4EC5;&#x4EC5;&#x60F3;&#x53BB;&#x7406;&#x89E3;&#x88C5;&#x9970;&#x5668;&#x548C;&#x88C5;&#x9970;&#x5668;&#x94FE;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
+<p><a href="https://stackoverflow.com/questions/739654/how-to-make-a-chain-of-function-decorators" target="_blank">&#x94FE;&#x63A5;</a></p>
+<h2 id="&#x56DE;&#x7B54;&#x4E00;">&#x56DE;&#x7B54;&#x4E00;</h2>
+<p>&#x67E5;&#x770B;<a href="https://docs.python.org/3/reference/compound_stmts.html#function" target="_blank">&#x6587;&#x6863;</a>&#x53BB;&#x4E86;&#x89E3;&#x88C5;&#x9970;&#x5668;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x662F;&#x4F60;&#x60F3;&#x8981;&#x7684;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">makebold</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapped</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&lt;b&gt;&quot;</span> <span class="token operator">+</span> fn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;/b&gt;&quot;</span>
+    <span class="token keyword">return</span> wrapped
+
+<span class="token keyword">def</span> <span class="token function">makeitalic</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapped</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&lt;i&gt;&quot;</span> <span class="token operator">+</span> fn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;/i&gt;&quot;</span>
+    <span class="token keyword">return</span> wrapped
+
+@makebold
+@makeitalic
+<span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;hello world&quot;</span>
+
+<span class="token keyword">print</span> hello<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">## returns &quot;&lt;b&gt;&lt;i&gt;hello world&lt;/i&gt;&lt;/b&gt;&quot;</span>
+</code></pre>
+<h2 id="&#x56DE;&#x7B54;&#x4E8C;">&#x56DE;&#x7B54;&#x4E8C;</h2>
+<h3 id="&#x88C5;&#x9970;&#x5668;&#x57FA;&#x7840;">&#x88C5;&#x9970;&#x5668;&#x57FA;&#x7840;</h3>
+<h4 id="python&#x4E2D;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;">Python&#x4E2D;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;</h4>
+<p>&#x4E3A;&#x4E86;&#x7406;&#x89E3;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x5148;&#x7406;&#x89E3;Python&#x4E2D;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x5F88;&#x91CD;&#x8981;&#x3002;&#x63A5;&#x4E0B;&#x7528;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x6765;&#x89E3;&#x91CA;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">shout</span><span class="token punctuation">(</span>word<span class="token operator">=</span><span class="token string">&quot;yes&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> word<span class="token punctuation">.</span>capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;!&quot;</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>shout<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &apos;Yes!&apos;</span>
+
+<span class="token comment" spellcheck="true"># &#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4F60;&#x4E5F;&#x80FD;&#x50CF;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#x628A;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x3002;</span>
+scream <span class="token operator">=</span> shout
+
+<span class="token comment" spellcheck="true"># &#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x62EC;&#x53F7;&#xFF1A;&#x6CA1;&#x6709;&#x8C03;&#x7528;shout</span>
+<span class="token comment" spellcheck="true"># &#x4EC5;&#x4EC5;&#x662F;&#x628A;shout&#x8D4B;&#x503C;&#x7ED9;scream&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x63A5;&#x4E0B;&#x6765;&#x53EF;&#x4EE5;&#x8C03;&#x7528;scream</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>scream<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &apos;Yes!&apos;</span>
+
+<span class="token comment" spellcheck="true"># &#x4E0D;&#x4EC5;&#x5982;&#x6B64;&#xFF0C;&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x5220;&#x9664;shout,</span>
+<span class="token comment" spellcheck="true"># &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;scream&#x8BBF;&#x95EE;&#x5230;&#x3002;</span>
+
+<span class="token keyword">del</span> shout
+<span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>shout<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">except</span> NameError<span class="token punctuation">,</span> e<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &quot;name &apos;shout&apos; is not defined&quot;</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>scream<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &apos;Yes!&apos;</span>
+</code></pre>
+<p>&#x8BB0;&#x4F4F;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x5F88;&#x5FEB;&#x4F1A;&#x7528;&#x5230;&#x3002;</p>
+<p>&#x5728;Python&#x4E2D;&#x51FD;&#x6570;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x7279;&#x6027;&#x662F;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x518D;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x58F0;&#x660E;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">talk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># &#x5728; &quot;talk&quot; &#x4E2D;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x51FD;&#x6570;...</span>
+    <span class="token keyword">def</span> <span class="token function">whisper</span><span class="token punctuation">(</span>word<span class="token operator">=</span><span class="token string">&quot;yes&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> word<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;...&quot;</span>
+
+    <span class="token comment" spellcheck="true"># ... &#x800C;&#x4E14;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x8C03;&#x7528;</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>whisper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># &#x6BCF;&#x6B21;&#x8C03;&#x7528; &#x201C;talk&#x201D;&#xFF0C;&#x5185;&#x90E8;&#x58F0;&#x660E;&#x7684; &quot;whisper&quot; &#x4E5F;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</span>
+talk<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &quot;yes...&quot;</span>
+
+<span class="token comment" spellcheck="true"># &#x4F46;&#x662F;&#x5728; &quot;talk&quot; &#x4E4B;&#x5916;&#xFF0C;&quot;whisper&quot; &#x5E76;&#x4E0D;&#x5B58;&#x5728;:</span>
+
+<span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>whisper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">except</span> NameError<span class="token punctuation">,</span> e<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># &#x8F93;&#x51FA; : &quot;name &apos;whisper&apos; is not defined&quot;*</span>
+    <span class="token comment" spellcheck="true"># Python&#x7684;&#x51FD;&#x6570;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x5C31;&#x50CF;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x5B9A;&#x4E49;&#x7684;&#x5176;&#x4ED6;&#x666E;&#x901A;&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#x3002;</span>
+</code></pre>
+<h4 id="&#x51FD;&#x6570;&#x5F15;&#x7528;">&#x51FD;&#x6570;&#x5F15;&#x7528;</h4>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x6BD4;&#x8F83;&#x6709;&#x8DA3;&#x4E86;&#x3002;</p>
+<p>&#x4F60;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x4E86;&#x51FD;&#x6570;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x88AB;&#x8D4B;&#x503C;&#x7ED9;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x7740;&#xFF0C;<strong>&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;<code>&#x8FD4;&#x56DE;</code>&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x3002;</strong></p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">getTalk</span><span class="token punctuation">(</span>kind<span class="token operator">=</span><span class="token string">&quot;shout&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># &#x968F;&#x610F;&#x5B9A;&#x4E49;&#x51FD;&#x6570;</span>
+    <span class="token keyword">def</span> <span class="token function">shout</span><span class="token punctuation">(</span>word<span class="token operator">=</span><span class="token string">&quot;yes&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> word<span class="token punctuation">.</span>capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&quot;!&quot;</span>
+
+    <span class="token keyword">def</span> <span class="token function">whisper</span><span class="token punctuation">(</span>word<span class="token operator">=</span><span class="token string">&quot;yes&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> word<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&quot;...&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true"># &#x6211;&#x4EEC;&#x8FD4;&#x56DE;&#x5176;&#x4E2D;&#x4E4B;&#x4E00;&#x3002;</span>
+    <span class="token keyword">if</span> kind <span class="token operator">==</span> <span class="token string">&quot;shout&quot;</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># &#x4E0D;&#x4F7F;&#x7528; &quot;()&quot;, &#x5373;&#x4E0D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4EC5;&#x8FD4;&#x56DE;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x3002;</span>
+        <span class="token keyword">return</span> shout  
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> whisper
+
+<span class="token comment" spellcheck="true"># &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x8D4B;&#x503C;&#x7ED9;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x3002;</span>
+talk <span class="token operator">=</span> getTalk<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># &#x63A5;&#x4E0B;&#x6765;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x201C;talk&#x201D;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x3002;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>talk<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &lt;function shout at 0xb7ea817c&gt;</span>
+
+<span class="token comment" spellcheck="true"># &#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;&#x88AB; &#x201C;getTalk&#x201D; &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x3002;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>talk<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: Yes!</span>
+
+<span class="token comment" spellcheck="true"># &#x4F60;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x8FD4;&#x56DE;&#x65F6;&#x8C03;&#x7528;&#x3002;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>getTalk<span class="token punctuation">(</span><span class="token string">&quot;whisper&quot;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: yes...</span>
+</code></pre>
+<p>&#x4E0D;&#x4EC5;&#x5982;&#x6B64;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x80FD;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4F60;&#x4E5F;&#x80FD;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">doSomethingBefore</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I do something before then I call the function you gave me&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+doSomethingBefore<span class="token punctuation">(</span>scream<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># I do something before then I call the function you gave me</span>
+<span class="token comment" spellcheck="true"># Yes!</span>
+</code></pre>
+<p>&#x4F60;&#x5DF2;&#x7ECF;&#x638C;&#x63E1;&#x4E86;&#x9700;&#x8981;&#x7406;&#x89E3;&#x88C5;&#x9970;&#x5668;&#x4E00;&#x5207;&#x57FA;&#x7840;&#x6982;&#x5FF5;&#x4E86;&#x3002;&#x6B63;&#x5982;&#x4F60;&#x6240;&#x89C1;&#xFF0C;&#x88C5;&#x9970;&#x5668;&#x5C31;&#x662F;&#x51FD;&#x6570;&#x7684;&#x201C;&#x5305;&#x88C5;&#x201D;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x88C5;&#x9970;&#x5668; <strong>&#x8BA9;&#x4F60;&#x80FD;&#x591F;&#x5728;&#x5B83;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x524D;&#x540E;&#xFF0C;&#x53BB;&#x6267;&#x884C;&#x53E6;&#x5916;&#x7684;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;</strong>&#xFF0C;&#x800C;&#x4E0D;&#x4FEE;&#x6539;&#x51FD;&#x6570;&#x672C;&#x8EAB;&#x3002;</p>
+<h3 id="&#x624B;&#x5DE5;&#x88C5;&#x9970;">&#x624B;&#x5DE5;&#x88C5;&#x9970;</h3>
+<p>&#x5982;&#x4F55;&#x624B;&#x5DE5;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x5462;&#xFF1F;</p>
+<pre class="language-"><code class="lang-python"><span class="token comment" spellcheck="true"># &#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x63A5;&#x6536;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</span>
+<span class="token keyword">def</span> <span class="token function">my_shiny_new_decorator</span><span class="token punctuation">(</span>a_function_to_decorate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># &#x51FD;&#x6570;&#x5185;&#x90E8;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x5305;&#x88C5;&#xFF08;wrapper&#xFF09;&#x539F;&#x51FD;&#x6570;&#xFF0C;</span>
+    <span class="token comment" spellcheck="true"># &#x56E0;&#x6B64;&#x80FD;&#x591F;&#x5728;&#x539F;&#x51FD;&#x6570;&#x524D;&#x540E;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x3002;</span>
+    <span class="token keyword">def</span> <span class="token function">the_wrapper_around_the_original_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        <span class="token comment" spellcheck="true"># &#x60F3;&#x5728;&#x539F;&#x51FD;&#x6570;&#x524D;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Before the function runs&quot;</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># &#x4F7F;&#x7528;&#x62EC;&#x53F7;&#x8C03;&#x7528;&#x539F;&#x51FD;&#x6570;</span>
+        a_function_to_decorate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># &#x60F3;&#x5728;&#x539F;&#x51FD;&#x6570;&#x540E;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;After the function runs&quot;</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x6267;&#x884C;&#x3002;&#x6211;&#x4EEC;&#x4EC5;&#x4EC5;&#x662F;&#x8FD4;&#x56DE;&#x6211;&#x4EEC;&#x521A;&#x521B;&#x5EFA;&#x7684;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x3002;</span>
+    <span class="token comment" spellcheck="true"># &#x8FD9;&#x4E2A;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x5305;&#x542B;&#x4E86;&#x539F;&#x51FD;&#x6570;&#x4EE5;&#x53CA;&#x60F3;&#x5728;&#x539F;&#x51FD;&#x6570;&#x524D;&#x540E;&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E00;&#x8D77;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#x3002;</span>
+    <span class="token keyword">return</span> the_wrapper_around_the_original_function
+
+<span class="token comment" spellcheck="true"># &#x73B0;&#x5728;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;&#x51FD;&#x6570;&#x3002;</span>
+<span class="token keyword">def</span> <span class="token function">a_stand_alone_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I am a stand alone function, don&apos;t you dare modify me&quot;</span><span class="token punctuation">)</span>
+
+a_stand_alone_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: I am a stand alone function, don&apos;t you dare modify me</span>
+
+<span class="token comment" spellcheck="true"># &#x597D;&#x4E86;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x88C5;&#x9970;&#x5B83;&#x6269;&#x5C55;&#x5B83;&#x7684;&#x884C;&#x4E3A;</span>
+<span class="token comment" spellcheck="true"># &#x53EA;&#x9700;&#x8981;&#x628A;&#x5B83;&#x4F20;&#x7ED9;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#x53BB;&#x52A8;&#x6001;&#x5730;&#x5305;&#x88C5;&#x5B83;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7B49;&#x5F85;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</span>
+
+a_stand_alone_function_decorated <span class="token operator">=</span> my_shiny_new_decorator<span class="token punctuation">(</span>a_stand_alone_function<span class="token punctuation">)</span>
+a_stand_alone_function_decorated<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># Before the function runs</span>
+<span class="token comment" spellcheck="true"># I am a stand alone function, don&apos;t you dare modify me</span>
+<span class="token comment" spellcheck="true"># After the function runs</span>
+</code></pre>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x4F60;&#x5F88;&#x53EF;&#x80FD;&#x60F3;&#xFF0C;&#x8C03;&#x7528; <code>a_stand_alone_function_decorated</code>&#x6765;&#x4EE3;&#x66FF;&#x8C03;&#x7528;<code>a_stand_alone_function</code>&#x3002;&#x90A3;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4EC5;&#x9700;&#x8981;&#x4F7F;&#x7528; <code>my_shiny_new_decorator</code>&#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x8986;&#x76D6;<code>a_stand_alone_function</code>&#x7684;&#x503C;&#x5373;&#x53EF;&#x3002;</p>
+<pre class="language-"><code class="lang-python">a_stand_alone_function <span class="token operator">=</span> my_shiny_new_decorator<span class="token punctuation">(</span>a_stand_alone_function<span class="token punctuation">)</span>
+a_stand_alone_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># Before the function runs</span>
+<span class="token comment" spellcheck="true"># I am a stand alone function, don&apos;t you dare modify me</span>
+<span class="token comment" spellcheck="true"># After the function runs</span>
+
+<span class="token comment" spellcheck="true"># &#x8FD9;&#x5C31;&#x662F;&#x88C5;&#x9970;&#x5668;&#x6240;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#xFF01;</span>
+</code></pre>
+<h3 id="&#x89E3;&#x5BC6;&#x88C5;&#x9970;&#x5668;">&#x89E3;&#x5BC6;&#x88C5;&#x9970;&#x5668;</h3>
+<p>&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;&#x6539;&#x5199;&#x4E4B;&#x524D;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<pre class="language-"><code class="lang-python">@my_shiny_new_decorator
+<span class="token keyword">def</span> <span class="token function">another_stand_alone_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Leave me alone&quot;</span><span class="token punctuation">)</span>
+
+another_stand_alone_function<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:  </span>
+<span class="token comment" spellcheck="true"># Before the function runs</span>
+<span class="token comment" spellcheck="true"># Leave me alone</span>
+<span class="token comment" spellcheck="true"># After the function runs</span>
+</code></pre>
+<p>&#x8FD9;&#x5F88;&#x7B80;&#x5355;&#xFF0C;<code>@decorator</code> &#x76F8;&#x5F53;&#x4E8E;&#x662F;&#x8FD9;&#x4E2A;&#x8D4B;&#x503C;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7B80;&#x5199;&#x3002;</p>
+<pre class="language-"><code class="lang-python">another_stand_alone_function <span class="token operator">=</span> my_shiny_new_decorator<span class="token punctuation">(</span>another_stand_alone_function<span class="token punctuation">)</span>
+</code></pre>
+<p>Decorators are just a pythonic variant of the decorator design pattern. There are several classic design patterns embedded in Python to ease development (like iterators).</p>
+<p>&#x88C5;&#x9970;&#x5668;&#x4EC5;&#x4EC5;&#x662F;<a href="https://en.wikipedia.org/wiki/Decorator_pattern" target="_blank">&#x88C5;&#x9970;&#x5668;&#x6A21;&#x5F0F;</a>&#x7684;Pythonic&#x5B9E;&#x73B0;&#x3002;Python&#x4E2D;&#x5185;&#x7F6E;&#x4E86;&#x5F88;&#x591A;&#x7ECF;&#x5178;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x7B80;&#x5316;&#x5F00;&#x53D1;&#xFF08;&#x4F8B;&#x5982;&#x8FED;&#x4EE3;&#x5668;&#x6A21;&#x5F0F;&#xFF09;&#x3002;</p>
+<p>&#x5F53;&#x524D;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x53E0;&#x52A0;&#x88C5;&#x9970;&#x5668;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">bread</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&lt;/&apos;&apos;&apos;&apos;&apos;&apos;\&gt;&quot;</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&lt;\______/&gt;&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+
+<span class="token keyword">def</span> <span class="token function">ingredients</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;#tomatoes#&quot;</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;~salad~&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+
+<span class="token keyword">def</span> <span class="token function">sandwich</span><span class="token punctuation">(</span>food<span class="token operator">=</span><span class="token string">&quot;--ham--&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span>
+
+sandwich<span class="token punctuation">(</span><span class="token punctuation">)</span>
+# &#x8F93;&#x51FA;<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token operator">-</span>ham<span class="token operator">-</span><span class="token operator">-</span>
+sandwich <span class="token operator">=</span> bread<span class="token punctuation">(</span>ingredients<span class="token punctuation">(</span>sandwich<span class="token punctuation">)</span><span class="token punctuation">)</span>
+sandwich<span class="token punctuation">(</span><span class="token punctuation">)</span>
+# &#x8F93;&#x51FA;<span class="token punctuation">:</span>
+# <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token string">&apos;&apos;</span><span class="token string">&apos;&apos;</span><span class="token string">&apos;&apos;</span>\<span class="token operator">&gt;</span>
+<span class="token comment" spellcheck="true"># #tomatoes#</span>
+<span class="token comment" spellcheck="true"># --ham--</span>
+<span class="token comment" spellcheck="true"># ~salad~</span>
+<span class="token comment" spellcheck="true"># &lt;\______/&gt;</span>
+</code></pre>
+<p>&#x4F7F;&#x7528;Python&#x7684;&#x88C5;&#x9970;&#x5668;&#x8BED;&#x6CD5;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">@bread
+@ingredients
+<span class="token keyword">def</span> <span class="token function">sandwich</span><span class="token punctuation">(</span>food<span class="token operator">=</span><span class="token string">&quot;--ham--&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span>
+
+sandwich<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#outputs:</span>
+<span class="token comment" spellcheck="true"># &lt;/&apos;&apos;&apos;&apos;&apos;&apos;\&gt;</span>
+<span class="token comment" spellcheck="true"># #tomatoes#</span>
+<span class="token comment" spellcheck="true"># --ham--</span>
+<span class="token comment" spellcheck="true"># ~salad~</span>
+<span class="token comment" spellcheck="true"># &lt;\______/&gt;</span>
+</code></pre>
+<p>&#x88C5;&#x9970;&#x5668;&#x7684;&#x987A;&#x5E8F;&#x4F1A;&#x5F71;&#x54CD;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">@ingredients
+@bread
+<span class="token keyword">def</span> <span class="token function">strange_sandwich</span><span class="token punctuation">(</span>food<span class="token operator">=</span><span class="token string">&quot;--ham--&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span>
+
+strange_sandwich<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># #tomatoes#</span>
+<span class="token comment" spellcheck="true"># &lt;/&apos;&apos;&apos;&apos;&apos;&apos;\&gt;</span>
+<span class="token comment" spellcheck="true"># --ham--</span>
+<span class="token comment" spellcheck="true"># &lt;\______/&gt;</span>
+<span class="token comment" spellcheck="true"># ~salad~</span>
+</code></pre>
+<h3 id="&#x73B0;&#x5728;&#x6765;&#x56DE;&#x6765;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;">&#x73B0;&#x5728;&#x6765;&#x56DE;&#x6765;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;</h3>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5F88;&#x8F7B;&#x677E;&#x5730;&#x56DE;&#x7B54;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E86;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token comment" spellcheck="true"># The decorator to make it bold</span>
+<span class="token keyword">def</span> <span class="token function">makebold</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># &#x88C5;&#x9970;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x65B0;&#x51FD;&#x6570;</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># &#x5728;&#x6267;&#x884C;&#x524D;&#x540E;&#x63D2;&#x5165;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&lt;b&gt;&quot;</span> <span class="token operator">+</span> fn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;/b&gt;&quot;</span>
+    <span class="token keyword">return</span> wrapper
+
+<span class="token comment" spellcheck="true"># The decorator to make it italic</span>
+<span class="token keyword">def</span> <span class="token function">makeitalic</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># &#x88C5;&#x9970;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x65B0;&#x51FD;&#x6570;</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># &#x5728;&#x6267;&#x884C;&#x524D;&#x540E;&#x63D2;&#x5165;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&lt;i&gt;&quot;</span> <span class="token operator">+</span> fn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;&lt;/i&gt;&quot;</span>
+    <span class="token keyword">return</span> wrapper
+
+@makebold
+@makeitalic
+<span class="token keyword">def</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;hello&quot;</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>say<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &lt;b&gt;&lt;i&gt;hello&lt;/i&gt;&lt;/b&gt;</span>
+
+<span class="token comment" spellcheck="true"># &#x7B49;&#x4EF7;&#x4E8E;</span>
+<span class="token keyword">def</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;hello&quot;</span>
+say <span class="token operator">=</span> makebold<span class="token punctuation">(</span>makeitalic<span class="token punctuation">(</span>say<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>say<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: &lt;b&gt;&lt;i&gt;hello&lt;/i&gt;&lt;/b&gt;</span>
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4ECB;&#x7ECD;&#x88C5;&#x9970;&#x5668;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x7528;&#x6CD5;&#x3002;</p>
+<h3 id="&#x88C5;&#x9970;&#x5668;&#x8FDB;&#x9636;">&#x88C5;&#x9970;&#x5668;&#x8FDB;&#x9636;</h3>
+<h4 id="&#x7ED9;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x4F20;&#x53C2;&#x6570;">&#x7ED9;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x4F20;&#x53C2;&#x6570;</h4>
+<pre class="language-"><code class="lang-python"><span class="token comment" spellcheck="true"># &#x7ED9;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x4F20;&#x9012;&#x53C2;&#x6570;</span>
+
+<span class="token keyword">def</span> <span class="token function">a_decorator_passing_arguments</span><span class="token punctuation">(</span>function_to_decorate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">a_wrapper_accepting_arguments</span><span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I got args! Look: {0}, {1}&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        function_to_decorate<span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> a_wrapper_accepting_arguments
+
+<span class="token comment" spellcheck="true"># &#x8C03;&#x7528;&#x88C5;&#x9970;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;, &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5728;&#x8C03;&#x7528;&#x5305;&#x88C5;&#x51FD;&#x6570;, &#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x518D;&#x4F20;&#x9012;&#x7ED9;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x3002;</span>
+
+@a_decorator_passing_arguments
+<span class="token keyword">def</span> <span class="token function">print_full_name</span><span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> last_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;My name is {0} {1}&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>first_name<span class="token punctuation">,</span> last_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+print_full_name<span class="token punctuation">(</span><span class="token string">&quot;Peter&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Venkman&quot;</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># I got args! Look: Peter Venkman</span>
+<span class="token comment" spellcheck="true"># My name is Peter Venkman</span>
+</code></pre>
+<h4 id="&#x88C5;&#x9970;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;">&#x88C5;&#x9970;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;</h4>
+<p>&#x5728;Python&#x4E2D;&#x65B9;&#x6CD5;&#x548C;&#x51FD;&#x6570;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x552F;&#x4E00;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x5BF9;&#x8C61;&#x65B9;&#x6CD5;&#x671F;&#x5F85;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5BF9;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#xFF08;<code>self</code>&#xFF09;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
+<p>&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x4F60;&#x4E5F;&#x80FD;&#x7528;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x7ED9;&#x7ED9;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x4EC5;&#x9700;&#x8981;&#x5C06;<code>self</code>&#x8003;&#x8651;&#x5728;&#x5185;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">method_friendly_decorator</span><span class="token punctuation">(</span>method_to_decorate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lie<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        lie <span class="token operator">=</span> lie <span class="token operator">-</span> <span class="token number">3</span> <span class="token comment" spellcheck="true"># very friendly, decrease age even more :-)</span>
+        <span class="token keyword">return</span> method_to_decorate<span class="token punctuation">(</span>self<span class="token punctuation">,</span> lie<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+
+
+<span class="token keyword">class</span> <span class="token class-name">Lucy</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">32</span>
+
+    @method_friendly_decorator
+    <span class="token keyword">def</span> <span class="token function">sayYourAge</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lie<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I am {0}, what did you think?&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>self<span class="token punctuation">.</span>age <span class="token operator">+</span> lie<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+l <span class="token operator">=</span> Lucy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+l<span class="token punctuation">.</span>sayYourAge<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: I am 26, what did you think?</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x521B;&#x5EFA;&#x901A;&#x7528;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x4E8E;&#x4EFB;&#x4F55;&#x51FD;&#x6570;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x7BA1;&#x5B83;&#x7684;&#x53C2;&#x6570;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>*args</code>, <code>**kwargs</code>&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">a_decorator_passing_arbitrary_arguments</span><span class="token punctuation">(</span>function_to_decorate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># &#x5305;&#x88C5;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4EFB;&#x4F55;&#x53C2;&#x6570;</span>
+    <span class="token keyword">def</span> <span class="token function">a_wrapper_accepting_arbitrary_arguments</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Do I have args?:&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>kwargs<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># &#x4E0D;&#x719F;&#x6089; *args &#x548C; **kwargs&#xFF0C;pack&#xFF0C;unpack</span>
+        <span class="token comment" spellcheck="true"># &#x8BF7;&#x67E5;&#x770B; http://www.saltycrane.com/blog/2008/01/how-to-use-args-and-kwargs-in-python/</span>
+        function_to_decorate<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> a_wrapper_accepting_arbitrary_arguments
+
+@a_decorator_passing_arbitrary_arguments
+<span class="token keyword">def</span> <span class="token function">function_with_no_argument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Python is cool, no argument here.&quot;</span><span class="token punctuation">)</span>
+
+function_with_no_argument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;&#xFF1A;</span>
+<span class="token comment" spellcheck="true"># Do I have args?:</span>
+<span class="token comment" spellcheck="true"># ()</span>
+<span class="token comment" spellcheck="true"># {}</span>
+<span class="token comment" spellcheck="true"># Python is cool, no argument here.</span>
+
+@a_decorator_passing_arbitrary_arguments
+<span class="token keyword">def</span> <span class="token function">function_with_arguments</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+
+function_with_arguments<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;&#xFF1A;</span>
+<span class="token comment" spellcheck="true"># Do I have args?:</span>
+<span class="token comment" spellcheck="true"># (1, 2, 3)</span>
+<span class="token comment" spellcheck="true"># {}</span>
+<span class="token comment" spellcheck="true"># 1 2 3</span>
+
+@a_decorator_passing_arbitrary_arguments
+<span class="token keyword">def</span> <span class="token function">function_with_named_arguments</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> platypus<span class="token operator">=</span><span class="token string">&quot;Why not ?&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Do {0}, {1} and {2} like platypus? {3}&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> platypus<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+function_with_named_arguments<span class="token punctuation">(</span><span class="token string">&quot;Bill&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Linus&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Steve&quot;</span><span class="token punctuation">,</span> platypus<span class="token operator">=</span><span class="token string">&quot;Indeed!&quot;</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;&#xFF1A;</span>
+<span class="token comment" spellcheck="true"># Do I have args ? :</span>
+<span class="token comment" spellcheck="true"># (&apos;Bill&apos;, &apos;Linus&apos;, &apos;Steve&apos;)</span>
+<span class="token comment" spellcheck="true"># {&apos;platypus&apos;: &apos;Indeed!&apos;}</span>
+<span class="token comment" spellcheck="true"># Do Bill, Linus and Steve like platypus? Indeed!</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Mary</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">31</span>
+
+    @a_decorator_passing_arbitrary_arguments
+    <span class="token keyword">def</span> <span class="token function">sayYourAge</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> lie<span class="token operator">=</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># You can now add a default value</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I am {0}, what did you think?&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>self<span class="token punctuation">.</span>age <span class="token operator">+</span> lie<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+m <span class="token operator">=</span> Mary<span class="token punctuation">(</span><span class="token punctuation">)</span>
+m<span class="token punctuation">.</span>sayYourAge<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># outputs</span>
+<span class="token comment" spellcheck="true"># Do I have args?:</span>
+<span class="token comment" spellcheck="true"># (&lt;__main__.Mary object at 0xb7d303ac&gt;,)</span>
+<span class="token comment" spellcheck="true"># {}</span>
+<span class="token comment" spellcheck="true"># I am 28, what did you think?</span>
+</code></pre>
+<h4 id="&#x7ED9;&#x88C5;&#x9970;&#x5668;&#x4F20;&#x53C2;&#x6570;">&#x7ED9;&#x88C5;&#x9970;&#x5668;&#x4F20;&#x53C2;&#x6570;</h4>
+<p>&#x5982;&#x4F55;&#x7ED9;&#x88C5;&#x9970;&#x5668;&#x672C;&#x8EAB;&#x4F20;&#x53C2;&#x6570;&#x5462;&#xFF1F;</p>
+<p>&#x8FD9;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x522B;&#x626D;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x5FC5;&#x987B;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4F60;&#x4E0D;&#x80FD;&#x591F;&#x5C06;&#x4F20;&#x9012;&#x7ED9;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x76F4;&#x63A5;&#x4F20;&#x7ED9;&#x88C5;&#x9970;&#x5668;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x4E2A;&#x5C0F;&#x793A;&#x4F8B;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token comment" spellcheck="true"># &#x88C5;&#x9970;&#x5668;&#x662F;&#x666E;&#x901A;&#x7684;&#x51FD;&#x6570;</span>
+<span class="token keyword">def</span> <span class="token function">my_decorator</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I am an ordinary function&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I am function returned by the decorator&quot;</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+
+<span class="token comment" spellcheck="true"># &#x56E0;&#x6B64;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x201C;@&#x201D;&#x6765;&#x8C03;&#x7528;&#x5B83;</span>
+
+<span class="token keyword">def</span> <span class="token function">lazy_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;zzzzzzzz&quot;</span><span class="token punctuation">)</span>
+
+decorated_function <span class="token operator">=</span> my_decorator<span class="token punctuation">(</span>lazy_function<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: I am an ordinary function</span>
+
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: I am an ordinary function&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x56E0;&#x4E3A;&#x4F60;&#x8C03;&#x7528;&#x4E86;&#x5B83;&#xFF0C;&#x6CA1;&#x5565;&#x7279;&#x522B;&#x7684;&#x3002;</span>
+
+@my_decorator
+<span class="token keyword">def</span> <span class="token function">lazy_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;zzzzzzzz&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;: I am an ordinary function</span>
+</code></pre>
+<p>It&#x2019;s exactly the same. &quot;my_decorator&quot; is called. So when you @my_decorator, you are telling Python to call the function &apos;labelled by the variable &quot;my_decorator&quot;&apos;.</p>
+<p>2&#x79CD;&#x7528;&#x6CD5;&#x6548;&#x679C;&#x4E00;&#x81F4;&#xFF0C;&#x201C;<code>my_decorator</code>&#x201D;&#x90FD;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5F53;&#x4F60;<code>@my_decorator</code>&#xFF0C;&#x4F60;&#x662F;&#x5728;&#x544A;&#x8BC9;Python&#xFF0C;&#x8C03;&#x7528;@&#x6807;&#x5FD7;&#x7684;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x8FD9;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x4F60;&#x7ED9;&#x7684;&#x8FD9;&#x4E2A;&#x6807;&#x7B7E;&#x80FD;&#x591F;&#x76F4;&#x63A5;&#x6307;&#x5411;&#x88C5;&#x9970;&#x5668;&#x3002;</p>
+<p>&#x66F4;&#x8FDB;&#x4E00;&#x6B65;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">decorator_maker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7531;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x53EA;&#x4F1A;&#x5728;&#x8C03;&#x7528;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#x65F6;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;&quot;</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">my_decorator</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6BCF;&#x6B21;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;&quot;</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">def</span> <span class="token function">wrapped</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x4E5F;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x4F5C;&#x4E3A;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x88AB;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x3002;&quot;</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x3002;&quot;</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> wrapped
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x4F5C;&#x4E3A;&#x88C5;&#x9970;&#x5668;&#x5236;&#x9020;&#x8005;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x3002;&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> my_decorator
+
+<span class="token comment" spellcheck="true"># &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;</span>
+new_decorator <span class="token operator">=</span> decorator_maker<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;</span>
+<span class="token comment" spellcheck="true"># &#x7531;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x53EA;&#x4F1A;&#x5728;&#x8C03;&#x7528;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#x65F6;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x4F5C;&#x4E3A;&#x88C5;&#x9970;&#x5668;&#x5236;&#x9020;&#x8005;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x3002;</span>
+
+<span class="token comment" spellcheck="true"># &#x63A5;&#x4E0B;&#x6765;&#x88C5;&#x9970;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</span>
+<span class="token keyword">def</span> <span class="token function">decorated_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&quot;</span><span class="token punctuation">)</span>
+
+decorated_function <span class="token operator">=</span> new_decorator<span class="token punctuation">(</span>decorated_function<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6BCF;&#x6B21;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x3002;</span>
+
+<span class="token comment" spellcheck="true"># &#x8C03;&#x7528;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;:</span>
+decorated_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x4E5F;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x4F5C;&#x4E3A;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x88AB;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;</span>
+</code></pre>
+<p>&#x8DF3;&#x8FC7;&#x4E2D;&#x95F4;&#x53D8;&#x91CF;&#xFF0C;&#x5B8C;&#x6210;&#x76F8;&#x540C;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">decorated_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&quot;</span><span class="token punctuation">)</span>
+
+decorated_function <span class="token operator">=</span> decorator_maker<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>decorated_function<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># &#x7531;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x53EA;&#x4F1A;&#x5728;&#x8C03;&#x7528;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#x65F6;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x4F5C;&#x4E3A;&#x88C5;&#x9970;&#x5668;&#x5236;&#x9020;&#x8005;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6BCF;&#x6B21;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x3002;</span>
+
+<span class="token comment" spellcheck="true"># &#x6700;&#x7EC8;:</span>
+decorated_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x4E5F;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x4F5C;&#x4E3A;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x88AB;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;</span>
+</code></pre>
+<p>&#x66F4;&#x7B80;&#x6D01;&#x4E00;&#x70B9;</p>
+<pre class="language-"><code class="lang-python">@decorator_maker<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">decorated_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;I am the decorated function.&quot;</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># &#x7531;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x53EA;&#x4F1A;&#x5728;&#x8C03;&#x7528;&#x6211;&#x6765;&#x521B;&#x5EFA;&#x88C5;&#x9970;&#x5668;&#x65F6;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x4F5C;&#x4E3A;&#x88C5;&#x9970;&#x5668;&#x5236;&#x9020;&#x8005;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6BCF;&#x6B21;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x3002;</span>
+
+<span class="token comment" spellcheck="true"># &#x6700;&#x7EC8;:</span>
+decorated_function<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x4E5F;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#xFF0C;&#x4F5C;&#x4E3A;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x8FD4;&#x56DE;&#x88AB;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x3002;</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;</span>
+</code></pre>
+<p>&#x770B;&#x5230;&#x4E86;&#x5417;&#xFF1F;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x201C;<code>@</code>&#x201D;&#x8BED;&#x6CD5;&#x65F6;&#xFF0C;&#x8FDB;&#x884C;&#x4E86;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x56DE;&#x5230;&#x5982;&#x679C;&#x7ED9;&#x88C5;&#x9970;&#x5668;&#x4F20;&#x53C2;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x53BB;&#x751F;&#x6210;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7ED9;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F20;&#x53C2;&#xFF0C;&#x4E0D;&#x662F;&#x5417;&#xFF1F;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">decorator_maker_with_arguments</span><span class="token punctuation">(</span>decorator_arg1<span class="token punctuation">,</span> decorator_arg2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x521B;&#x5EFA;&#x4E86;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x63A5;&#x6536;&#x53C2;&#x6570;: {0}, {1}&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>decorator_arg1<span class="token punctuation">,</span> decorator_arg2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">my_decorator</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># &#x4E86;&#x89E3;&#x95ED;&#x5305;</span>
+        <span class="token comment" spellcheck="true"># &#x53C2;&#x8003;https://stackoverflow.com/questions/13857/can-you-explain-closures-as-they-relate-to-python</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x7ED9;&#x6211;&#x4F20;&#x4E86;&#x53C2;&#x6570;: {0}, {1}&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>decorator_arg1<span class="token punctuation">,</span> decorator_arg2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># Don&apos;t confuse decorator arguments and function arguments!</span>
+        <span class="token keyword">def</span> <span class="token function">wrapped</span><span class="token punctuation">(</span>function_arg1<span class="token punctuation">,</span> function_arg2<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x80FD;&#x8BBF;&#x95EE;&#x6240;&#x6709;&#x7684;&#x53D8;&#x91CF;\n&quot;</span>
+                  <span class="token string">&quot;\t- &#x6765;&#x81EA;&#x88C5;&#x9970;&#x5668;&#x7684;: {0} {1}\n&quot;</span>
+                  <span class="token string">&quot;\t- &#x6765;&#x81EA;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;: {2} {3}\n&quot;</span>
+                  <span class="token string">&quot;&#x6211;&#x80FD;&#x628A;&#x5B83;&#x4EEC;&#x88C5;&#x9012;&#x7ED9;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&quot;</span>
+                  <span class="token punctuation">.</span>format<span class="token punctuation">(</span>decorator_arg1<span class="token punctuation">,</span> decorator_arg2<span class="token punctuation">,</span>
+                        function_arg1<span class="token punctuation">,</span> function_arg2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> func<span class="token punctuation">(</span>function_arg1<span class="token punctuation">,</span> function_arg2<span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> wrapped
+
+    <span class="token keyword">return</span> my_decorator
+
+@decorator_maker_with_arguments<span class="token punctuation">(</span><span class="token string">&quot;Leonard&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Sheldon&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">decorated_function_with_arguments</span><span class="token punctuation">(</span>function_arg1<span class="token punctuation">,</span> function_arg2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x88AB;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x4EC5;&#x4EC5;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x7684;&#x53C2;&#x6570;: {0}&quot;</span>
+           <span class="token string">&quot; {1}&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>function_arg1<span class="token punctuation">,</span> function_arg2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+decorated_function_with_arguments<span class="token punctuation">(</span><span class="token string">&quot;Rajesh&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Howard&quot;</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># &#x8F93;&#x51FA;:</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x521B;&#x5EFA;&#x4E86;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x63A5;&#x6536;&#x53C2;&#x6570;:: Leonard, Sheldon</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x7ED9;&#x6211;&#x4F20;&#x4E86;&#x53C2;&#x6570;: Leonard, Sheldon</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x80FD;&#x8BBF;&#x95EE;&#x6240;&#x6709;&#x7684;&#x53D8;&#x91CF;</span>
+<span class="token comment" spellcheck="true">#    - &#x6765;&#x81EA;&#x88C5;&#x9970;&#x5668;&#x7684;: Leonard Sheldon</span>
+<span class="token comment" spellcheck="true">#    - &#x6765;&#x81EA;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;: Rajesh Howard</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x80FD;&#x628A;&#x5B83;&#x4EEC;&#x88C5;&#x9012;&#x7ED9;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;</span>
+<span class="token comment" spellcheck="true"># &#x6211;&#x662F;&#x88AB;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x4EC5;&#x4EC5;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x7684;&#x53C2;&#x6570;: Rajesh Howard</span>
+</code></pre>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x5305;&#x542B;&#x53C2;&#x6570;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x53C2;&#x6570;&#x4E5F;&#x80FD;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x53D8;&#x91CF;&#x3002;</p>
+<pre class="language-"><code class="lang-python">c1 <span class="token operator">=</span> <span class="token string">&quot;Penny&quot;</span>
+c2 <span class="token operator">=</span> <span class="token string">&quot;Leslie&quot;</span>
+
+@decorator_maker_with_arguments<span class="token punctuation">(</span><span class="token string">&quot;Leonard&quot;</span><span class="token punctuation">,</span> c1<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">decorated_function_with_arguments</span><span class="token punctuation">(</span>function_arg1<span class="token punctuation">,</span> function_arg2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6211;&#x662F;&#x88AB;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x4EC5;&#x4EC5;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x7684;&#x53C2;&#x6570;:&quot;</span>
+           <span class="token string">&quot; {0} {1}&quot;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>function_arg1<span class="token punctuation">,</span> function_arg2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+decorated_function_with_arguments<span class="token punctuation">(</span>c2<span class="token punctuation">,</span> <span class="token string">&quot;Howard&quot;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>As you can see, you can pass arguments to the decorator like any function using this trick. You can even use <em>args, *</em>kwargs if you wish. But remember decorators are called only once. Just when Python imports the script. You can&apos;t dynamically set the arguments afterwards. When you do &quot;import x&quot;, the function is already decorated, so you can&apos;t change anything.</p>
+<p>&#x5982;&#x4F60;&#x6240;&#x89C1;&#xFF0C;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4F60;&#x80FD;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7ED9;&#x88C5;&#x9970;&#x5668;&#x3002;&#x4F60;&#x751A;&#x81F3;&#x80FD;&#x4F7F;&#x7528;<code>*args</code>&#xFF0C;<code>**kwargs</code>&#xFF0C;&#x4F46;&#x662F;&#x8BB0;&#x4F4F;&#xFF0C;&#x88C5;&#x9970;&#x5668;&#x53EA;&#x88AB; <strong>&#x8C03;&#x7528;&#x4E00;&#x6B21;</strong>&#xFF0C;&#x4EC5;&#x4EC5;&#x5F53;Python&#x5BFC;&#x5165;&#x8FD9;&#x4E2A;&#x811A;&#x672C;&#x7684;&#x65F6;&#x5019;&#x3002;&#x4E4B;&#x540E;&#x4F60;&#x4E0D;&#x80FD;&#x52A8;&#x6001;&#x5730;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x3002;&#x5F53;&#x4F60;&quot;import x&quot;&#x65F6;&#xFF0C;<strong>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5DF2;&#x7ECF;&#x88AB;&#x88C5;&#x9970;&#x4E86;</strong>&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x80FD;&#x53D8;&#x4E86;&#x3002;</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-21 02:04:53 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="16.using-global-variables-in-a-function.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 16. 如何在函数中使用全局变量">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"17. 如何创建连续调用的函数装饰器","level":"1.2.17","depth":2,"previous":{"title":"16. 如何在函数中使用全局变量","level":"1.2.16","depth":2,"path":"stackoverflow/16.using-global-variables-in-a-function.md","ref":"stackoverflow/16.using-global-variables-in-a-function.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/17.how-to-make-a-chain-of-function-decorators.md","mtime":"2018-06-20T18:04:53.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-20T18:05:43.429Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

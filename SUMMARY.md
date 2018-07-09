@@ -19,4 +19,5 @@
     * [15. 如何访问for循环中的下标](stackoverflow/15.accessing-the-index-in-for-loops.md)
     * [16. 如何在函数中使用全局变量](stackoverflow/16.using-global-variables-in-a-function.md)
     * [17. 如何创建连续调用的函数装饰器](stackoverflow/17.how-to-make-a-chain-of-function-decorators.md)
+    * [18. 理解python的切片符号](stackoverflow/18.understanding-pythons-slice-notation.md)
 

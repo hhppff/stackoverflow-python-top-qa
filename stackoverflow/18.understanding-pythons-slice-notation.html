@@ -70,6 +70,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html" />
+    
     
     <link rel="prev" href="17.how-to-make-a-chain-of-function-decorators.html" />
     
@@ -170,7 +172,7 @@
                 <a href="2.what-are-metaclasses-in-python.html">
             
                     
-                    2. 什么是元类(metaclass)
+                    2. 什么是元类（metaclass）
             
                 </a>
             
@@ -386,6 +388,110 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.19" data-path="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html">
+            
+                <a href="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html">
+            
+                    
+                    19. Python中如何在列表中找到某个元素的下标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="20.check-if-a-given-key-already-exists-in-a-dictionary.html">
+            
+                <a href="20.check-if-a-given-key-already-exists-in-a-dictionary.html">
+            
+                    
+                    20. 字典如何判断键已存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="21.how-do-i-install-pip-on-windows.html">
+            
+                <a href="21.how-do-i-install-pip-on-windows.html">
+            
+                    
+                    21. 如何在Windows上安装pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="22.iterating-over-dictionaries-using-for-loops.html">
+            
+                <a href="22.iterating-over-dictionaries-using-for-loops.html">
+            
+                    
+                    22. 使用'for'循环迭代字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="23.difference-between-str-and-repr.html">
+            
+                <a href="23.difference-between-str-and-repr.html">
+            
+                    
+                    23. __str__ 和 __repr__的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="24.making-a-flat-list-out-of-list-of-lists-in-python.html">
+            
+                <a href="24.making-a-flat-list-out-of-list-of-lists-in-python.html">
+            
+                    
+                    24. Python中如何展开嵌套列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="25.least-astonishment-and-the-mutable-default-argument.html">
+            
+                <a href="25.least-astonishment-and-the-mutable-default-argument.html">
+            
+                    
+                    25. 最小经验原则（POLA）与可变默认参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="26.how-do-i-pass-a-variable-by-reference.html">
+            
+                <a href="26.how-do-i-pass-a-variable-by-reference.html">
+            
+                    
+                    26. 如何按引用传值
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -436,7 +542,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="18-&#x7406;&#x89E3;python&#x7684;&#x5207;&#x7247;&#x7B26;&#x5408;">18. &#x7406;&#x89E3;python&#x7684;&#x5207;&#x7247;&#x7B26;&#x5408;</h1>
+                                <h1 id="18-&#x7406;&#x89E3;python&#x7684;&#x5207;&#x7247;&#x7B26;&#x53F7;">18. &#x7406;&#x89E3;python&#x7684;&#x5207;&#x7247;&#x7B26;&#x53F7;</h1>
 <h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
 <p>&#x6211;&#x9700;&#x8981;&#x5BF9;Python&#x7684;&#x5207;&#x7247;&#x7B26;&#x53F7;&#x8868;&#x793A;&#x6709;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x89E3;&#x91CA;(&#x6709;&#x5F15;&#x7528;&#x66F4;&#x4F73;)&#x3002;</p>
 <p>&#x5BF9;&#x6211;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E2A;&#x7B26;&#x53F7;&#x9700;&#x8981;&#x4E00;&#x70B9;&#x8865;&#x5145;&#x3002;</p>
@@ -465,7 +571,7 @@ a<span class="token punctuation">[</span><span class="token punctuation">:</span
 a<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># everything except the last two items, reversed</span>
 </code></pre>
 <p>&#x5982;&#x679C;&#x9879;&#x76EE;&#x6BD4;&#x4F60;&#x8981;&#x6C42;&#x7684;&#x8981;&#x5C11;&#xFF0C;Python&#x5BF9;&#x7A0B;&#x5E8F;&#x5458;&#x6765;&#x8BF4;&#x662F;&#x5F88;&#x597D;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x8981;&#x6C42;<code>a[:-2]</code>&#x5E76;&#x4E14;<code>a</code>&#x53EA;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x90A3;&#x4E48;&#x60A8;&#x5C06;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x7A7A;&#x5217;&#x8868;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x3002;&#x6709;&#x65F6;&#x4F60;&#x66F4;&#x559C;&#x6B22;&#x9519;&#x8BEF;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x5FC5;&#x987B;&#x610F;&#x8BC6;&#x5230;&#x8FD9;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x3002;</p>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-07-09 22:10:42 </span> </footer>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-09-18 23:20:53 </span> </footer>
                                 
                                 </section>
                             
@@ -492,10 +598,14 @@ a<span class="token punctuation">[</span><span class="token operator">-</span><s
 
             
                 
-                <a href="17.how-to-make-a-chain-of-function-decorators.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 17. 如何创建连续调用的函数装饰器">
+                <a href="17.how-to-make-a-chain-of-function-decorators.html" class="navigation navigation-prev " aria-label="Previous page: 17. 如何创建连续调用的函数装饰器">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html" class="navigation navigation-next " aria-label="Next page: 19. Python中如何在列表中找到某个元素的下标">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -504,7 +614,7 @@ a<span class="token punctuation">[</span><span class="token operator">-</span><s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"18. 理解python的切片符号","level":"1.2.18","depth":2,"previous":{"title":"17. 如何创建连续调用的函数装饰器","level":"1.2.17","depth":2,"path":"stackoverflow/17.how-to-make-a-chain-of-function-decorators.md","ref":"stackoverflow/17.how-to-make-a-chain-of-function-decorators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/18.understanding-pythons-slice-notation.md","mtime":"2018-07-09T14:10:42.816Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-09T14:14:44.952Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"18. 理解python的切片符号","level":"1.2.18","depth":2,"next":{"title":"19. Python中如何在列表中找到某个元素的下标","level":"1.2.19","depth":2,"path":"stackoverflow/19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.md","ref":"stackoverflow/19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.md","articles":[]},"previous":{"title":"17. 如何创建连续调用的函数装饰器","level":"1.2.17","depth":2,"path":"stackoverflow/17.how-to-make-a-chain-of-function-decorators.md","ref":"stackoverflow/17.how-to-make-a-chain-of-function-decorators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/18.understanding-pythons-slice-notation.md","mtime":"2018-09-18T15:20:53.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T15:47:11.512Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

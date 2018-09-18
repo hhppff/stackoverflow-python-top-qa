@@ -1,0 +1,716 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>23. __str__ 和 __repr__的区别 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="24.making-a-flat-list-out-of-list-of-lists-in-python.html" />
+    
+    
+    <link rel="prev" href="22.iterating-over-dictionaries-using-for-loops.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://geektutu.com/series" target="_blank" class="custom-link">极客兔兔的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/geekcircle/stackoverflow-python-top-qa" target="_blank" class="custom-link">stackoverflow-python-top-qa</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    StackOverflow
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.what-does-the-yield-keyword-do.html">
+            
+                <a href="1.what-does-the-yield-keyword-do.html">
+            
+                    
+                    1. yield关键字的作用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2.what-are-metaclasses-in-python.html">
+            
+                <a href="2.what-are-metaclasses-in-python.html">
+            
+                    
+                    2. 什么是元类（metaclass）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                <a href="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                    
+                    3. Python中有三目运算符吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4.how-to-check-whether-a-file-exists.html">
+            
+                <a href="4.how-to-check-whether-a-file-exists.html">
+            
+                    
+                    4. 如何检查一个文件是否存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5.what-does-if-name-main-do.html">
+            
+                <a href="5.what-does-if-name-main-do.html">
+            
+                    
+                    5. if name == "main": 这句话做了什么事情
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6.calling-an-external-command-in-python.html">
+            
+                <a href="6.calling-an-external-command-in-python.html">
+            
+                    
+                    6. 在Python中调用外部命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                <a href="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                    
+                    7. 如何用一行代码合并2个字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                <a href="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                    
+                    8. 如何创建一个不存在的目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                <a href="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                    
+                    9. 如何根据值对字典排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="10.does-python-have-a-string-contains-substring-method.html">
+            
+                <a href="10.does-python-have-a-string-contains-substring-method.html">
+            
+                    
+                    10. Python中有判断字符串包含(contains)子串的方法吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="11.how-do-i-list-all-files-of-a-directory.html">
+            
+                <a href="11.how-do-i-list-all-files-of-a-directory.html">
+            
+                    
+                    11. 如何列出一个文件夹下的所有文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                <a href="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                    
+                    12. 如何检查列表是否为空
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                <a href="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                    
+                    13. list方法append()与extend()的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                <a href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                    
+                    14. Python中@staticmethod与@classmethod的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="15.accessing-the-index-in-for-loops.html">
+            
+                <a href="15.accessing-the-index-in-for-loops.html">
+            
+                    
+                    15. 如何访问for循环中的下标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="16.using-global-variables-in-a-function.html">
+            
+                <a href="16.using-global-variables-in-a-function.html">
+            
+                    
+                    16. 如何在函数中使用全局变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="17.how-to-make-a-chain-of-function-decorators.html">
+            
+                <a href="17.how-to-make-a-chain-of-function-decorators.html">
+            
+                    
+                    17. 如何创建连续调用的函数装饰器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="18.understanding-pythons-slice-notation.html">
+            
+                <a href="18.understanding-pythons-slice-notation.html">
+            
+                    
+                    18. 理解python的切片符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html">
+            
+                <a href="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html">
+            
+                    
+                    19. Python中如何在列表中找到某个元素的下标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="20.check-if-a-given-key-already-exists-in-a-dictionary.html">
+            
+                <a href="20.check-if-a-given-key-already-exists-in-a-dictionary.html">
+            
+                    
+                    20. 字典如何判断键已存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="21.how-do-i-install-pip-on-windows.html">
+            
+                <a href="21.how-do-i-install-pip-on-windows.html">
+            
+                    
+                    21. 如何在Windows上安装pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="22.iterating-over-dictionaries-using-for-loops.html">
+            
+                <a href="22.iterating-over-dictionaries-using-for-loops.html">
+            
+                    
+                    22. 使用'for'循环迭代字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.23" data-path="23.difference-between-str-and-repr.html">
+            
+                <a href="23.difference-between-str-and-repr.html">
+            
+                    
+                    23. __str__ 和 __repr__的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="24.making-a-flat-list-out-of-list-of-lists-in-python.html">
+            
+                <a href="24.making-a-flat-list-out-of-list-of-lists-in-python.html">
+            
+                    
+                    24. Python中如何展开嵌套列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="25.least-astonishment-and-the-mutable-default-argument.html">
+            
+                <a href="25.least-astonishment-and-the-mutable-default-argument.html">
+            
+                    
+                    25. 最小经验原则（POLA）与可变默认参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="26.how-do-i-pass-a-variable-by-reference.html">
+            
+                <a href="26.how-do-i-pass-a-variable-by-reference.html">
+            
+                    
+                    26. 如何按引用传值
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >23. __str__ 和 __repr__的区别</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="23-str-&#x548C;-repr&#x7684;&#x533A;&#x522B;">23. __str__ &#x548C; __repr__&#x7684;&#x533A;&#x522B;</h1>
+<h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
+<p><code>python</code>&#x4E2D;<code>__str__</code>&#x548C;<code>__repr__</code>&#x7684;&#x533A;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<h2 id="&#x56DE;&#x7B54;&#x4E00;">&#x56DE;&#x7B54;&#x4E00;</h2>
+<p><code>__str__</code>&#x548C;<code>__repr__</code>&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x5BF9;&#x8C61;&#x72B6;&#x6001;&#x8FD4;&#x56DE;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7279;&#x6B8A;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x7F3A;&#x5C11;<code>__str__</code>&#xFF0C;<code>__repr__</code>&#x63D0;&#x4F9B;&#x5907;&#x4EFD;&#x884C;&#x4E3A;&#xFF0C;&#x5373;&#x5982;&#x679C;&#x7F3A;&#x5C11;<code>__str__</code>&#xFF0C;<code>__str__</code>&#x7684;&#x884C;&#x4E3A;&#x4E0E;<code>__repr__</code>&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x9996;&#x5148;&#x5E94;&#x8BE5;&#x7F16;&#x5199;&#x4E00;&#x4E2A;<code>__repr__</code>&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x4F60;&#x6839;&#x636E;&#x5B83;&#x8FD4;&#x56DE;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x91CD;&#x65B0;&#x5B9E;&#x4F8B;&#x5316;&#x4E3A;&#x7B49;&#x4EF7;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>eval</code>&#x6216;&#x8005;&#x5728;Python shell&#x4E2D;&#x9010;&#x4E2A;&#x5B57;&#x7B26;&#x952E;&#x5165;&#x6765;&#x5F97;&#x5230;&#x7B49;&#x4EF7;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x8FD9;&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>__str__</code>&#x4F5C;&#x4E3A;&#x7528;&#x6237;&#x53EF;&#x8BFB;&#x7684;&#x5B9E;&#x4F8B;&#x63CF;&#x8FF0;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x8BA4;&#x4E3A;&#x8FD9;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x8BDD;&#x3002;</p>
+<h3 id="str"><code>__str__</code></h3>
+<p>&#x5982;&#x679C;&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x6216;&#x8005;&#x628A;&#x5BF9;&#x8C61;&#x4F20;&#x7ED9;<code>format</code>&#xFF0C;<code>str.format</code>&#xFF0C;&#x5982;&#x679C;<code>__str__</code>&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x4F1A;&#x6267;&#x884C;<code>__repr__</code>&#x3002;</p>
+<h3 id="repr"><code>__repr__</code></h3>
+<p>&#x5185;&#x7F6E;&#x51FD;&#x6570;<code>repr</code>&#x4F1A;&#x8C03;&#x7528;<code>__repr__</code>&#xFF0C;&#x5F53;&#x4F60;&#x5728;Python shell&#x4E2D;&#x8BA1;&#x7B97;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x65F6;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x5728;shell&#x4E2D;&#x663E;&#x793A;&#x4E3A;<code>__repr__</code>&#x8FD4;&#x56DE;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x5B83;&#x662F;<code>__str__</code>&#x7684;&#x56DE;&#x9000;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x53EA;&#x80FD;&#x5199;&#x4E00;&#x4E2A;&#xFF0C;&#x90A3;&#x4E48;&#x4E45;&#x5B9E;&#x73B0;<code>__repr__</code>&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;<code>repr</code>&#x51FD;&#x6570;&#x7684;&#x5185;&#x7F6E;&#x5E2E;&#x52A9;&#x3002;</p>
+<pre class="language-"><code class="lang-python">repr<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    repr<span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> string
+
+    Return the canonical string representation of the object<span class="token punctuation">.</span>
+    For most object types<span class="token punctuation">,</span> eval<span class="token punctuation">(</span>repr<span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> object<span class="token punctuation">.</span>
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;&#x5927;&#x90E8;&#x5206;&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x952E;&#x5165;<code>repr</code>&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7B49;&#x4EF7;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;Python&#x8BED;&#x8A00;&#x9ED8;&#x8BA4;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="repr&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;"><code>__repr__</code>&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;</h3>
+<p><code>__repr__</code>&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;(<a href="https://hg.python.org/cpython/file/2.7/Objects/object.c#l377" target="_blank">C Python source</a>) &#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">&apos;&lt;{0}.{1} object at {2}&gt;&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>
+      self<span class="token punctuation">.</span>__module__<span class="token punctuation">,</span> type<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> hex<span class="token punctuation">(</span>id<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x8FD9;&#x610F;&#x5473;&#x7740;&#x9ED8;&#x8BA4;&#x6253;&#x5370;&#x51FA;&#x6A21;&#x5757;&#x6765;&#x81EA;&#x54EA;&#xFF0C;&#x7C7B;&#x540D;&#x548C;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&lt;</span>__main__<span class="token punctuation">.</span>Foo object at <span class="token number">0x7f80665abdd0</span><span class="token operator">&gt;</span>
+</code></pre>
+<p>&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x4E0D;&#x662F;&#x5F88;&#x6709;&#x7528;&#xFF0C;&#x7528;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x4E5F;&#x4E0D;&#x80FD;&#x591F;&#x51C6;&#x786E;&#x5730;&#x521B;&#x5EFA;&#x51FA;&#x7ED9;&#x5B9A;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x4F46;&#x6709;&#x603B;&#x6BD4;&#x6CA1;&#x6709;&#x597D;&#xFF0C;&#x81F3;&#x5C11;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x552F;&#x4E00;&#x8BC6;&#x522B;&#x5B83;&#x3002;</p>
+<h3 id="repr-&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;"><code>__repr__</code> &#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF1F;</h3>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x5B83;&#x7684;&#x7528;&#x5904;&#xFF0C;&#x4F7F;&#x7528;Python shell&#x548C;<code>datatime</code>&#x5BF9;&#x8C61;&#xFF0C;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BFC;&#x5165;<code>datetime</code>&#x6A21;&#x5757;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> datetime
+</code></pre>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;shell&#x4E2D;&#x8C03;&#x7528;<code>datetime.now</code>&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x770B;&#x5230;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x51FA;&#x7B49;&#x4EF7;datetime&#x5BF9;&#x8C61;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;datetime&#x7684;<code>__repr__</code>&#x751F;&#x6210;&#x7684;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>
+datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2015</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">,</span> <span class="token number">491180</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6253;&#x5370;&#x4E00;&#x4E2A;datetime&#x5BF9;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x770B;&#x5230;&#x9002;&#x5408;&#x4EBA;&#x7C7B;&#x9605;&#x8BFB;&#x7684;&#xFF08;ISO&#x8868;&#x793A;&#xFF09;&#x683C;&#x5F0F;&#xFF0C;&#x8FD9;&#x662F;&#x7531;datetime&#x7684;<code>__str__</code>&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2015</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">24</span> <span class="token number">20</span><span class="token punctuation">:</span><span class="token number">05</span><span class="token punctuation">:</span><span class="token number">44.977951</span>
+</code></pre>
+<p>&#x5229;&#x7528;<code>__repr__</code>&#x7684;&#x4FE1;&#x606F;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x51FA;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x7684;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5370;&#x5B83;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5F97;&#x5230;&#x548C;&#x4E0A;&#x9762;&#x793A;&#x4F8B;&#x4E00;&#x6837;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#x5F3A;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> the_past <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2015</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">,</span> <span class="token number">491180</span><span class="token punctuation">)</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span>the_past<span class="token punctuation">)</span>
+<span class="token number">2015</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">24</span> <span class="token number">20</span><span class="token punctuation">:</span><span class="token number">05</span><span class="token punctuation">:</span><span class="token number">36.491180</span>
+</code></pre>
+<h3 id="&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5B83;&#x4EEC;">&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5B83;&#x4EEC;</h3>
+<p>&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x60F3;&#x5982;&#x4F55;&#x518D;&#x6B21;&#x751F;&#x6210;&#x76F8;&#x540C;&#x72B6;&#x6001;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x4F8B;&#x5982;&#xFF0C;datetime&#x5BF9;&#x8C61;&#x7684;<code>__repr__</code>&#xFF08;<a href="https://hg.python.org/cpython/file/3.4/Lib/datetime.py#l1570" target="_blank">Python source</a>&#xFF09;&#x662F;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x7684;&#x3002;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x56E0;&#x4E3A;&#x9700;&#x8981;&#x91CD;&#x5EFA;&#x8FD9;&#x4E00;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;Convert to formal string, for repr().&quot;&quot;&quot;</span>
+    L <span class="token operator">=</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>_year<span class="token punctuation">,</span> self<span class="token punctuation">.</span>_month<span class="token punctuation">,</span> self<span class="token punctuation">.</span>_day<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># These are never zero</span>
+         self<span class="token punctuation">.</span>_hour<span class="token punctuation">,</span> self<span class="token punctuation">.</span>_minute<span class="token punctuation">,</span> self<span class="token punctuation">.</span>_second<span class="token punctuation">,</span> self<span class="token punctuation">.</span>_microsecond<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> L<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">del</span> L<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> L<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">del</span> L<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    s <span class="token operator">=</span> <span class="token string">&quot;, &quot;</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>map<span class="token punctuation">(</span>str<span class="token punctuation">,</span> L<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    s <span class="token operator">=</span> <span class="token string">&quot;%s(%s)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token string">&apos;datetime.&apos;</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> self<span class="token punctuation">.</span>_tzinfo <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>
+        <span class="token keyword">assert</span> s<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">&quot;)&quot;</span>
+        s <span class="token operator">=</span> s<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">&quot;, tzinfo=%r&quot;</span> <span class="token operator">%</span> self<span class="token punctuation">.</span>_tzinfo <span class="token operator">+</span> <span class="token string">&quot;)&quot;</span>
+    <span class="token keyword">return</span> s
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8BA9;&#x5BF9;&#x8C61;&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x5F3A;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>__str__</code>&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x662F;datetime&#x5BF9;&#x8C61;&#x5982;&#x4F55;&#x5B9E;&#x73B0;<code>__str__</code>&#xFF0C;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x56E0;&#x4E3A;&#x5DF2;&#x7ECF;&#x6709;&#x8F6C;&#x6362;&#x4E3A;ISO&#x683C;&#x5F0F;&#x7684;&#x51FD;&#x6570;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token string">&quot;Convert to string, for str().&quot;</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>isoformat<span class="token punctuation">(</span>sep<span class="token operator">=</span><span class="token string">&apos; &apos;</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="&#x8BBE;reprstr&#xFF1F;">&#x8BBE;<code>__repr__</code>=<code>__str__</code>&#xFF1F;</h3>
+<p>&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x662F;&#x611A;&#x8822;&#x7684;&#x3002;<code>__repr__</code>&#x662F;<code>__str__</code>&#x7684;&#x56DE;&#x9000;&#x884C;&#x4E3A;&#xFF0C;<code>__repr__</code>&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;&#x8005;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;<code>__str__</code>&#x4E4B;&#x524D;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x4EC5;&#x4EC5;&#x5F53;&#x4F60;&#x9700;&#x8981;&#x5BF9;&#x8C61;&#x7684;&#x6587;&#x672C;&#x8868;&#x793A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x624D;&#x9700;&#x8981;&#x5B9E;&#x73B0;<code>__str__</code>&#x3002;</p>
+<h3 id="&#x7ED3;&#x8BBA;">&#x7ED3;&#x8BBA;</h3>
+<p>&#x4E3A;&#x4F60;&#x5199;&#x7684;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x5B9A;&#x4E49;<code>__repr__</code>&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x5F00;&#x53D1;&#x8005;&#x6709;&#x4E86;&#x91CD;&#x5EFA;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x793A;&#x4F8B;&#x3002;</p>
+<p>&#x5F53;&#x4F60;&#x9700;&#x8981;&#x4EBA;&#x7C7B;&#x53EF;&#x9605;&#x8BFB;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x793A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B9A;&#x4E49;<code>__str__</code>&#x3002;</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-09-18 23:24:35 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="22.iterating-over-dictionaries-using-for-loops.html" class="navigation navigation-prev " aria-label="Previous page: 22. 使用'for'循环迭代字典">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="24.making-a-flat-list-out-of-list-of-lists-in-python.html" class="navigation navigation-next " aria-label="Next page: 24. Python中如何展开嵌套列表">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"23. __str__ 和 __repr__的区别","level":"1.2.23","depth":2,"next":{"title":"24. Python中如何展开嵌套列表","level":"1.2.24","depth":2,"path":"stackoverflow/24.making-a-flat-list-out-of-list-of-lists-in-python.md","ref":"stackoverflow/24.making-a-flat-list-out-of-list-of-lists-in-python.md","articles":[]},"previous":{"title":"22. 使用'for'循环迭代字典","level":"1.2.22","depth":2,"path":"stackoverflow/22.iterating-over-dictionaries-using-for-loops.md","ref":"stackoverflow/22.iterating-over-dictionaries-using-for-loops.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/23.difference-between-str-and-repr.md","mtime":"2018-09-18T15:24:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T15:47:11.512Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

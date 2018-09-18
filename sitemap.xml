@@ -19,4 +19,12 @@
 <url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/16.using-global-variables-in-a-function.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/17.how-to-make-a-chain-of-function-decorators.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/18.understanding-pythons-slice-notation.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/20.check-if-a-given-key-already-exists-in-a-dictionary.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/21.how-do-i-install-pip-on-windows.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/22.iterating-over-dictionaries-using-for-loops.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/23.difference-between-str-and-repr.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/24.making-a-flat-list-out-of-list-of-lists-in-python.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/25.least-astonishment-and-the-mutable-default-argument.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://geekcircle.github.io/stackoverflow-python-top-qa/stackoverflow/26.how-do-i-pass-a-variable-by-reference.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>

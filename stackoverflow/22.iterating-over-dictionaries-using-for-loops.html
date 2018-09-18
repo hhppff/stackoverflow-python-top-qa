@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>13. list方法append()与extend()的区别 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
+        <title>22. 使用'for'循环迭代字典 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -70,10 +70,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html" />
+    <link rel="next" href="23.difference-between-str-and-repr.html" />
     
     
-    <link rel="prev" href="12.how-do-i-check-if-a-list-is-empty.html" />
+    <link rel="prev" href="21.how-do-i-install-pip-on-windows.html" />
     
 
     <style>
@@ -310,7 +310,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.13" data-path="13.difference-between-append-vs-extend-list-methods-in-python.html">
+        <li class="chapter " data-level="1.2.13" data-path="13.difference-between-append-vs-extend-list-methods-in-python.html">
             
                 <a href="13.difference-between-append-vs-extend-list-methods-in-python.html">
             
@@ -427,7 +427,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.22" data-path="22.iterating-over-dictionaries-using-for-loops.html">
+        <li class="chapter active" data-level="1.2.22" data-path="22.iterating-over-dictionaries-using-for-loops.html">
             
                 <a href="22.iterating-over-dictionaries-using-for-loops.html">
             
@@ -527,7 +527,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >13. list方法append()与extend()的区别</a>
+        <a href=".." >22. 使用'for'循环迭代字典</a>
     </h1>
 </div>
 
@@ -542,43 +542,35 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="13-list&#x65B9;&#x6CD5;append&#x4E0E;extend&#x7684;&#x533A;&#x522B;">13. list&#x65B9;&#x6CD5;append()&#x4E0E;extend()&#x7684;&#x533A;&#x522B;</h1>
+                                <h1 id="22-&#x4F7F;&#x7528;for&#x5FAA;&#x73AF;&#x8FED;&#x4EE3;&#x5B57;&#x5178;">22. &#x4F7F;&#x7528;&apos;for&apos;&#x5FAA;&#x73AF;&#x8FED;&#x4EE3;&#x5B57;&#x5178;</h1>
 <h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
-<p>list&#x65B9;&#x6CD5;append()&#x548C;extend()&#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#x662F;&#x4EC0;&#x4E48;?</p>
-<p><a href="https://stackoverflow.com/questions/252703/difference-between-append-vs-extend-list-methods-in-python" target="_blank">&#x94FE;&#x63A5;</a></p>
+<p>&#x6211;&#x5BF9;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x6709;&#x4E9B;&#x7591;&#x60D1;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">&apos;x&apos;</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&apos;y&apos;</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">&apos;z&apos;</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+<span class="token keyword">for</span> key <span class="token keyword">in</span> d<span class="token punctuation">:</span>
+    <span class="token keyword">print</span> key<span class="token punctuation">,</span> <span class="token string">&apos;corresponds to&apos;</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+</code></pre>
+<p>&#x6211;&#x4E0D;&#x7406;&#x89E3;&#x7684;&#x662F;<code>key</code>&#xFF0C; Python&#x662F;&#x5982;&#x4F55;&#x610F;&#x8BC6;&#x5230;&#x53EA;&#x9700;&#x8981;&#x4ECE;&#x5B57;&#x5178;&#x4E2D;&#x8BFB;&#x53D6;&#x952E;&#x7684;&#x5462;&#xFF1F;<code>key</code>&#x5728;Python&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x8BCD;&#x5417;&#xFF1F;&#x6216;&#x8005;&#x5B83;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x3002;<a href="https://stackoverflow.com/questions/3294889/iterating-over-dictionaries-using-for-loops" target="_blank">&#x94FE;&#x63A5;</a></p>
 <h2 id="&#x56DE;&#x7B54;&#x4E00;">&#x56DE;&#x7B54;&#x4E00;</h2>
-<p><a href="https://docs.python.org/2/library/array.html?#array.array.append" target="_blank">append</a>:&#x5728;&#x7ED3;&#x5C3E;&#x8FFD;&#x52A0;&#x5BF9;&#x8C61;&#x3002;</p>
-<pre class="language-"><code class="lang-python">x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-x<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<p><code>key</code>&#x4EC5;&#x4EC5;&#x662F;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x540D;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">for</span> key <span class="token keyword">in</span> d<span class="token punctuation">:</span>
 </code></pre>
-<p>&#x7ED3;&#x679C;&#x662F;: [1, 2, 3, [4, 5]]</p>
-<p><a href="https://docs.python.org/2/library/array.html?#array.array.extend" target="_blank">extend</a>:&#x901A;&#x8FC7;&#x4ECE;&#x53EF;&#x8FED;&#x4EE3;&#x7684;&#x5143;&#x7D20;&#x4E2D;&#x8FFD;&#x52A0;&#x5143;&#x7D20;&#x6765;&#x6269;&#x5C55;&#x5217;&#x8868;&#x3002;</p>
-<pre class="language-"><code class="lang-python">x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-x<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<p>&#x5C06;&#x7B80;&#x5355;&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x5B57;&#x5178;&#x7684;&#x952E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x952E;&#x548C;&#x503C;&#x3002;&#x540C;&#x65F6;&#x904D;&#x5386;&#x952E;&#x548C;&#x503C;&#xFF0C;&#x9700;&#x8981;&#x8FD9;&#x4E48;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;Python 2.x&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token keyword">in</span> d<span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 </code></pre>
-<p>&#x7ED3;&#x679C;&#x662F;: [1, 2, 3, 4, 5]</p>
-<h2 id="&#x56DE;&#x7B54;&#x4E8C;">&#x56DE;&#x7B54;&#x4E8C;</h2>
-<p><code>append</code>&#x5C06;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230;&#x5217;&#x8868;&#x4E2D;&#xFF0C;<code>extend</code>&#x5C06;&#x7B2C;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x4E0E;&#x53E6;&#x4E00;&#x4E2A;&#x5217;&#x8868;(&#x6216;&#x53E6;&#x4E00;&#x4E2A;&#x53EF;&#x8FED;&#x4EE3;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x5217;&#x8868;)&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
-<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;mpilgrim&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;z&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;example&apos;</span><span class="token punctuation">]</span>
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li
-<span class="token punctuation">[</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;mpilgrim&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;z&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;example&apos;</span><span class="token punctuation">]</span>
-
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">&quot;new&quot;</span><span class="token punctuation">)</span>
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li
-<span class="token punctuation">[</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;mpilgrim&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;z&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;example&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;new&apos;</span><span class="token punctuation">]</span>
-
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">&quot;new&quot;</span><span class="token punctuation">)</span>
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li
-<span class="token punctuation">[</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;new&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;mpilgrim&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;z&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;example&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;new&apos;</span><span class="token punctuation">]</span>
-
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&quot;two&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;elements&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> li
-<span class="token punctuation">[</span><span class="token string">&apos;a&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;b&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;new&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;mpilgrim&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;z&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;example&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;new&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;two&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;elements&apos;</span><span class="token punctuation">]</span>
+<p>&#x5BF9;&#x4E8E;Python 3.x&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 </code></pre>
-<p>&#x5F15;&#x7528;&#x81EA;<a href="http://www.diveintopython.net/native_data_types/lists.html#d0e5887" target="_blank">Dive into Python</a>&#x3002;</p>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-06-05 00:01:21 </span> </footer>
+<p>&#x4E3A;&#x4E86;&#x6D4B;&#x8BD5;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x53D8;&#x91CF;<code>key</code>&#x6539;&#x4E3A;<code>poop</code>&#x3002;</p>
+<p>&#x5728;Python 3.x&#x4E2D;&#xFF0C;<code>iteritems()</code>&#x5DF2;&#x7ECF;&#x88AB;<code>items()</code>&#x66FF;&#x4EE3;&#x4E86;&#xFF0C;&#x4EC5;&#x8FD4;&#x56DE;&#x7531;&#x5B57;&#x5178;&#x652F;&#x6301;&#x7684;&#x7C7B;&#x4F3C;&#x4E8E;&#x96C6;&#x5408;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x5C31;&#x50CF;<code>iteritems()</code>&#x4E00;&#x6837;&#xFF0C;&#x751A;&#x81F3;&#x6027;&#x80FD;&#x66F4;&#x597D;&#x3002;&#x5728;2.7 &#x4E2D;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;<code>viewitems()</code>&#x6765;&#x4EE3;&#x66FF;&#x3002;</p>
+<p><code>items()</code>&#x65B9;&#x6CD5;&#x5728;2&#x548C;3&#x4E2D;&#x90FD;&#x652F;&#x6301;&#xFF0C;&#x4F46;&#x662F;&#x5728;2&#x4E2D;&#x4F1A;&#x8FD4;&#x56DE;&#x5B57;&#x5178;&#x952E;&#x503C;&#x5BF9;&#x7EC4;&#x6210;&#x7684;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x4E0D;&#x4F1A;&#x53CD;&#x5E94;&#x5BF9;&#x5B57;&#x5178;&#x7684;&#x66F4;&#x6539;&#x3002;&#x5982;&#x679C;&#x60F3;&#x5728;3.x&#x4E2D;&#x5B9E;&#x73B0;2.x&#x4E2D;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>list(d.items())</code>&#x3002;</p>
+<p>&#x53EA;&#x904D;&#x5386;&#x952E;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">for</span> key <span class="token keyword">in</span> d<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</code></pre>
+<p>&#x53EA;&#x904D;&#x5386;&#x503C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">for</span> value <span class="token keyword">in</span> d<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</code></pre>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-09-18 23:24:11 </span> </footer>
                                 
                                 </section>
                             
@@ -605,12 +597,12 @@ x<span class="token punctuation">.</span>append<span class="token punctuation">(
 
             
                 
-                <a href="12.how-do-i-check-if-a-list-is-empty.html" class="navigation navigation-prev " aria-label="Previous page: 12. 如何检查列表是否为空">
+                <a href="21.how-do-i-install-pip-on-windows.html" class="navigation navigation-prev " aria-label="Previous page: 21. 如何在Windows上安装pip">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html" class="navigation navigation-next " aria-label="Next page: 14. Python中@staticmethod与@classmethod的区别">
+                <a href="23.difference-between-str-and-repr.html" class="navigation navigation-next " aria-label="Next page: 23. __str__ 和 __repr__的区别">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -621,7 +613,7 @@ x<span class="token punctuation">.</span>append<span class="token punctuation">(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"13. list方法append()与extend()的区别","level":"1.2.13","depth":2,"next":{"title":"14. Python中@staticmethod与@classmethod的区别","level":"1.2.14","depth":2,"path":"stackoverflow/14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.md","ref":"stackoverflow/14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.md","articles":[]},"previous":{"title":"12. 如何检查列表是否为空","level":"1.2.12","depth":2,"path":"stackoverflow/12.how-do-i-check-if-a-list-is-empty.md","ref":"stackoverflow/12.how-do-i-check-if-a-list-is-empty.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/13.difference-between-append-vs-extend-list-methods-in-python.md","mtime":"2018-06-04T16:01:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T15:47:11.512Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"22. 使用'for'循环迭代字典","level":"1.2.22","depth":2,"next":{"title":"23. __str__ 和 __repr__的区别","level":"1.2.23","depth":2,"path":"stackoverflow/23.difference-between-str-and-repr.md","ref":"stackoverflow/23.difference-between-str-and-repr.md","articles":[]},"previous":{"title":"21. 如何在Windows上安装pip","level":"1.2.21","depth":2,"path":"stackoverflow/21.how-do-i-install-pip-on-windows.md","ref":"stackoverflow/21.how-do-i-install-pip-on-windows.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/22.iterating-over-dictionaries-using-for-loops.md","mtime":"2018-09-18T15:24:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T15:47:11.512Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

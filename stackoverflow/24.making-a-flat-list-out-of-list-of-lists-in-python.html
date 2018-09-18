@@ -1,0 +1,697 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>24. Python中如何展开嵌套列表 · StackOverflow上票数最高的100个Python个问题 - 极客圈</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="25.least-astonishment-and-the-mutable-default-argument.html" />
+    
+    
+    <link rel="prev" href="23.difference-between-str-and-repr.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://geektutu.com/series" target="_blank" class="custom-link">极客兔兔的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/geekcircle/stackoverflow-python-top-qa" target="_blank" class="custom-link">stackoverflow-python-top-qa</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    StackOverflow
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.what-does-the-yield-keyword-do.html">
+            
+                <a href="1.what-does-the-yield-keyword-do.html">
+            
+                    
+                    1. yield关键字的作用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2.what-are-metaclasses-in-python.html">
+            
+                <a href="2.what-are-metaclasses-in-python.html">
+            
+                    
+                    2. 什么是元类（metaclass）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                <a href="3.does-python-have-a-ternary-conditional-operator.html">
+            
+                    
+                    3. Python中有三目运算符吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4.how-to-check-whether-a-file-exists.html">
+            
+                <a href="4.how-to-check-whether-a-file-exists.html">
+            
+                    
+                    4. 如何检查一个文件是否存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5.what-does-if-name-main-do.html">
+            
+                <a href="5.what-does-if-name-main-do.html">
+            
+                    
+                    5. if name == "main": 这句话做了什么事情
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6.calling-an-external-command-in-python.html">
+            
+                <a href="6.calling-an-external-command-in-python.html">
+            
+                    
+                    6. 在Python中调用外部命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                <a href="7.how-to-merge-two-dictionaries-in-a-single-expression.html">
+            
+                    
+                    7. 如何用一行代码合并2个字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                <a href="8.how-can-i-create-a-directory-if-it-does-not-exist.html">
+            
+                    
+                    8. 如何创建一个不存在的目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                <a href="9.how-do-i-sort-a-dictionary-by-value.html">
+            
+                    
+                    9. 如何根据值对字典排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="10.does-python-have-a-string-contains-substring-method.html">
+            
+                <a href="10.does-python-have-a-string-contains-substring-method.html">
+            
+                    
+                    10. Python中有判断字符串包含(contains)子串的方法吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="11.how-do-i-list-all-files-of-a-directory.html">
+            
+                <a href="11.how-do-i-list-all-files-of-a-directory.html">
+            
+                    
+                    11. 如何列出一个文件夹下的所有文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                <a href="12.how-do-i-check-if-a-list-is-empty.html">
+            
+                    
+                    12. 如何检查列表是否为空
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                <a href="13.difference-between-append-vs-extend-list-methods-in-python.html">
+            
+                    
+                    13. list方法append()与extend()的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                <a href="14.what-is-the-difference-between-staticmethod-and-classmethod-in-python.html">
+            
+                    
+                    14. Python中@staticmethod与@classmethod的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="15.accessing-the-index-in-for-loops.html">
+            
+                <a href="15.accessing-the-index-in-for-loops.html">
+            
+                    
+                    15. 如何访问for循环中的下标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="16.using-global-variables-in-a-function.html">
+            
+                <a href="16.using-global-variables-in-a-function.html">
+            
+                    
+                    16. 如何在函数中使用全局变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="17.how-to-make-a-chain-of-function-decorators.html">
+            
+                <a href="17.how-to-make-a-chain-of-function-decorators.html">
+            
+                    
+                    17. 如何创建连续调用的函数装饰器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="18.understanding-pythons-slice-notation.html">
+            
+                <a href="18.understanding-pythons-slice-notation.html">
+            
+                    
+                    18. 理解python的切片符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html">
+            
+                <a href="19.finding-the-index-of-an-item-given-a-list-containing-it-in-python.html">
+            
+                    
+                    19. Python中如何在列表中找到某个元素的下标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="20.check-if-a-given-key-already-exists-in-a-dictionary.html">
+            
+                <a href="20.check-if-a-given-key-already-exists-in-a-dictionary.html">
+            
+                    
+                    20. 字典如何判断键已存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="21.how-do-i-install-pip-on-windows.html">
+            
+                <a href="21.how-do-i-install-pip-on-windows.html">
+            
+                    
+                    21. 如何在Windows上安装pip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="22.iterating-over-dictionaries-using-for-loops.html">
+            
+                <a href="22.iterating-over-dictionaries-using-for-loops.html">
+            
+                    
+                    22. 使用'for'循环迭代字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="23.difference-between-str-and-repr.html">
+            
+                <a href="23.difference-between-str-and-repr.html">
+            
+                    
+                    23. __str__ 和 __repr__的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.24" data-path="24.making-a-flat-list-out-of-list-of-lists-in-python.html">
+            
+                <a href="24.making-a-flat-list-out-of-list-of-lists-in-python.html">
+            
+                    
+                    24. Python中如何展开嵌套列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="25.least-astonishment-and-the-mutable-default-argument.html">
+            
+                <a href="25.least-astonishment-and-the-mutable-default-argument.html">
+            
+                    
+                    25. 最小经验原则（POLA）与可变默认参数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="26.how-do-i-pass-a-variable-by-reference.html">
+            
+                <a href="26.how-do-i-pass-a-variable-by-reference.html">
+            
+                    
+                    26. 如何按引用传值
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >24. Python中如何展开嵌套列表</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="24-python&#x4E2D;&#x5982;&#x4F55;&#x5C55;&#x5F00;&#x5D4C;&#x5957;&#x5217;&#x8868;">24. Python&#x4E2D;&#x5982;&#x4F55;&#x5C55;&#x5F00;&#x5D4C;&#x5957;&#x5217;&#x8868;</h1>
+<h2 id="&#x9898;&#x76EE;">&#x9898;&#x76EE;</h2>
+<p>&#x6211;&#x60F3;&#x77E5;&#x9053;Python&#x4E2D;&#x662F;&#x5426;&#x6709;&#x4EC0;&#x4E48;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5C55;&#x5F00;&#x5D4C;&#x5957;&#x5217;&#x8868;&#x3002;</p>
+<p>&#x6211;&#x53EF;&#x4EE5;&#x7528;&#x5FAA;&#x73AF;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x6CA1;&#x6709;&#x66F4;&#x9177;&#x7684;&#x4E00;&#x884C;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x5C1D;&#x8BD5;&#x4E86;<em>reduce</em>&#xFF0C;&#x4F46;&#x662F;&#x5931;&#x8D25;&#x4E86;&#x3002;<a href="https://stackoverflow.com/questions/952914/making-a-flat-list-out-of-list-of-lists-in-python" target="_blank">&#x94FE;&#x63A5;</a></p>
+<p>&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+reduce<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> x<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">,</span> l<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">&quot;&lt;stdin&gt;&quot;</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>
+  File <span class="token string">&quot;&lt;stdin&gt;&quot;</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span><span class="token keyword">lambda</span><span class="token operator">&gt;</span>
+AttributeError<span class="token punctuation">:</span> <span class="token string">&apos;NoneType&apos;</span> object has no attribute <span class="token string">&apos;extend&apos;</span>
+</code></pre>
+<h2 id="&#x56DE;&#x7B54;&#x4E00;">&#x56DE;&#x7B54;&#x4E00;</h2>
+<pre class="language-"><code class="lang-python">flat_list <span class="token operator">=</span> <span class="token punctuation">[</span>item <span class="token keyword">for</span> sublist <span class="token keyword">in</span> l <span class="token keyword">for</span> item <span class="token keyword">in</span> sublist<span class="token punctuation">]</span>
+</code></pre>
+<p>&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">for</span> sublist <span class="token keyword">in</span> l<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> sublist<span class="token punctuation">:</span>
+        flat_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x901F;&#x5EA6;&#x5F88;&#x5FEB;&#x3002;(<code>l</code> &#x662F;&#x5C06;&#x8981;&#x88AB;&#x5C55;&#x5F00;&#x7684;&#x5D4C;&#x5957;&#x5217;&#x8868;)</p>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x5BF9;&#x5E94;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">flatten <span class="token operator">=</span> <span class="token keyword">lambda</span> l<span class="token punctuation">:</span> <span class="token punctuation">[</span>item <span class="token keyword">for</span> sublist <span class="token keyword">in</span> l <span class="token keyword">for</span> item <span class="token keyword">in</span> sublist<span class="token punctuation">]</span>
+</code></pre>
+<p>&#x53E3;&#x8BF4;&#x65E0;&#x51ED;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;<code>timeit</code>&#x6A21;&#x5757;&#x6D4B;&#x8BD5;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python">$ python <span class="token operator">-</span>mtimeit <span class="token operator">-</span>s<span class="token string">&apos;l=[[1,2,3],[4,5,6], [7], [8,9]]*99&apos;</span> <span class="token string">&apos;[item for sublist in l for item in sublist]&apos;</span>
+<span class="token number">10000</span> loops<span class="token punctuation">,</span> best of <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">143</span> usec per loop
+$ python <span class="token operator">-</span>mtimeit <span class="token operator">-</span>s<span class="token string">&apos;l=[[1,2,3],[4,5,6], [7], [8,9]]*99&apos;</span> <span class="token string">&apos;sum(l, [])&apos;</span>
+<span class="token number">1000</span> loops<span class="token punctuation">,</span> best of <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">969</span> usec per loop
+$ python <span class="token operator">-</span>mtimeit <span class="token operator">-</span>s<span class="token string">&apos;l=[[1,2,3],[4,5,6], [7], [8,9]]*99&apos;</span> <span class="token string">&apos;reduce(lambda x,y: x+y,l)&apos;</span>
+<span class="token number">1000</span> loops<span class="token punctuation">,</span> best of <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">1.1</span> msec per loop
+</code></pre>
+<h3 id="&#x56DE;&#x7B54;&#x4E8C;">&#x56DE;&#x7B54;&#x4E8C;</h3>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="http://docs.python.org/2/library/itertools.html#itertools.chain" target="_blank"><code>itertools.chain()</code></a>:</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">import</span> itertools
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> list2d <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> merged <span class="token operator">=</span> list<span class="token punctuation">(</span>itertools<span class="token punctuation">.</span>chain<span class="token punctuation">(</span><span class="token operator">*</span>list2d<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Python &gt;= 2.6&#xFF0C;&#x4F7F;&#x7528;<a href="http://docs.python.org/2/library/itertools.html#itertools.chain.from_iterable" target="_blank"><code>itertools.chain.from_iterable()</code></a> &#xFF0C;&#x4E0D;&#x7528;&#x5C55;&#x5F00;&#x5217;&#x8868;&#x3002;</p>
+<pre class="language-"><code class="lang-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token keyword">import</span> itertools
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> list2d <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> merged <span class="token operator">=</span> list<span class="token punctuation">(</span>itertools<span class="token punctuation">.</span>chain<span class="token punctuation">.</span>from_iterable<span class="token punctuation">(</span>list2d<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6BD4;<code>[item for sublist in l for item in sublist]</code>&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x597D;&#xFF0C;&#x901F;&#x5EA6;&#x4E5F;&#x66F4;&#x5FEB;&#xFF1A;</p>
+<pre class="language-"><code class="lang-python"><span class="token punctuation">[</span>me@home<span class="token punctuation">]</span>$ python <span class="token operator">-</span>mtimeit <span class="token operator">-</span>s<span class="token string">&apos;l=[[1,2,3],[4,5,6], [7], [8,9]]*99;import itertools&apos;</span> <span class="token string">&apos;list(itertools.chain.from_iterable(l))&apos;</span>
+<span class="token number">10000</span> loops<span class="token punctuation">,</span> best of <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">24.2</span> usec per loop
+<span class="token punctuation">[</span>me@home<span class="token punctuation">]</span>$ python <span class="token operator">-</span>mtimeit <span class="token operator">-</span>s<span class="token string">&apos;l=[[1,2,3],[4,5,6], [7], [8,9]]*99&apos;</span> <span class="token string">&apos;[item for sublist in l for item in sublist]&apos;</span>
+<span class="token number">10000</span> loops<span class="token punctuation">,</span> best of <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">45.2</span> usec per loop
+<span class="token punctuation">[</span>me@home<span class="token punctuation">]</span>$ python <span class="token operator">-</span>mtimeit <span class="token operator">-</span>s<span class="token string">&apos;l=[[1,2,3],[4,5,6], [7], [8,9]]*99&apos;</span> <span class="token string">&apos;sum(l, [])&apos;</span>
+<span class="token number">1000</span> loops<span class="token punctuation">,</span> best of <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">488</span> usec per loop
+<span class="token punctuation">[</span>me@home<span class="token punctuation">]</span>$ python <span class="token operator">-</span>mtimeit <span class="token operator">-</span>s<span class="token string">&apos;l=[[1,2,3],[4,5,6], [7], [8,9]]*99&apos;</span> <span class="token string">&apos;reduce(lambda x,y: x+y,l)&apos;</span>
+<span class="token number">1000</span> loops<span class="token punctuation">,</span> best of <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">522</span> usec per loop
+<span class="token punctuation">[</span>me@home<span class="token punctuation">]</span>$ python <span class="token operator">-</span><span class="token operator">-</span>version
+Python <span class="token number">2.7</span><span class="token punctuation">.</span><span class="token number">3</span>
+</code></pre>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> <a href="https://github.com/geekcircle" target="_blank">geekcircle</a> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <strong>updated</strong> 2018-09-18 23:25:16 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="23.difference-between-str-and-repr.html" class="navigation navigation-prev " aria-label="Previous page: 23. __str__ 和 __repr__的区别">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="25.least-astonishment-and-the-mutable-default-argument.html" class="navigation navigation-next " aria-label="Next page: 25. 最小经验原则（POLA）与可变默认参数">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"24. Python中如何展开嵌套列表","level":"1.2.24","depth":2,"next":{"title":"25. 最小经验原则（POLA）与可变默认参数","level":"1.2.25","depth":2,"path":"stackoverflow/25.least-astonishment-and-the-mutable-default-argument.md","ref":"stackoverflow/25.least-astonishment-and-the-mutable-default-argument.md","articles":[]},"previous":{"title":"23. __str__ 和 __repr__的区别","level":"1.2.23","depth":2,"path":"stackoverflow/23.difference-between-str-and-repr.md","ref":"stackoverflow/23.difference-between-str-and-repr.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","expandable-chapters","splitter","page-footer-ex","prism","github","github-buttons","sitemap-general"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/geekcircle/stackoverflow-python-top-qa"},"page-footer-ex":{"copyright":"[geekcircle](https://github.com/geekcircle)","markdown":true,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<strong>updated</strong>"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sitemap-general":{"prefix":"https://geekcircle.github.io/stackoverflow-python-top-qa/"},"fontsettings":{"theme":"white","family":"sans","size":2},"github-buttons":{"buttons":[{"user":"geekcircle","repo":"stackoverflow-python-top-qa","type":"star","size":"large"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"StackOverflow上票数最高的100个Python个问题 - 极客圈","language":"zh-hans","links":{"sidebar":{"极客兔兔的博客":"https://geektutu.com/series","stackoverflow-python-top-qa":"https://github.com/geekcircle/stackoverflow-python-top-qa"}},"gitbook":"*","description":"StackOverflow上票数最高的100个Python个问题"},"file":{"path":"stackoverflow/24.making-a-flat-list-out-of-list-of-lists-in-python.md","mtime":"2018-09-18T15:25:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-18T15:47:11.512Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
